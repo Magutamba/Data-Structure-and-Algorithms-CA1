@@ -32,32 +32,100 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        title = new javax.swing.JTextField();
+        environmentDataBtn = new javax.swing.JButton();
+        priorityEnvironmentBtn = new javax.swing.JButton();
+        climateActionBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
-        jTextField1.setText("BiodiversityOrganiser");
+        title.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        title.setText("BiodiversityManager Main Page");
+        title.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titleActionPerformed(evt);
+            }
+        });
+
+        environmentDataBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        environmentDataBtn.setText("Environment Data ");
+        environmentDataBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                environmentDataBtnActionPerformed(evt);
+            }
+        });
+
+        priorityEnvironmentBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        priorityEnvironmentBtn.setText("Priority Environment");
+        priorityEnvironmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priorityEnvironmentBtnActionPerformed(evt);
+            }
+        });
+
+        climateActionBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        climateActionBtn.setText("ClimateAction");
+        climateActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                climateActionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(272, 272, 272)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addGap(84, 84, 84)
+                .addComponent(environmentDataBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(priorityEnvironmentBtn)
+                .addGap(26, 26, 26)
+                .addComponent(climateActionBtn)
+                .addGap(98, 98, 98))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(239, 239, 239))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(139, 139, 139)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(environmentDataBtn)
+                    .addComponent(priorityEnvironmentBtn)
+                    .addComponent(climateActionBtn))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void titleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titleActionPerformed
+
+    private void environmentDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_environmentDataBtnActionPerformed
+        // TODO add your handling code here:
+        new EnvironmentDataGUI.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_environmentDataBtnActionPerformed
+
+    private void priorityEnvironmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityEnvironmentBtnActionPerformed
+        // TODO add your handling code here:
+        new PriorityEnvironmentGUI.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
+
+    private void climateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climateActionBtnActionPerformed
+        // TODO add your handling code here:
+        new ClimateActionGUI.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_climateActionBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,6 +153,9 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton climateActionBtn;
+    private javax.swing.JButton environmentDataBtn;
+    private javax.swing.JButton priorityEnvironmentBtn;
+    private javax.swing.JTextField title;
     // End of variables declaration//GEN-END:variables
 }

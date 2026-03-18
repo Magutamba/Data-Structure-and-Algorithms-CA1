@@ -46,6 +46,12 @@ public class BiodiversityManager {
     public String getDescription() {
         return description;
     }
+    //error handling for scope
+    public void validScope(String scope){
+        if(!scope.equalsIgnoreCase("Country") && !scope.equalsIgnoreCase("City") && !scope.equalsIgnoreCase("Habitat") ){
+            throw new IllegalArgumentException(" Scope can only be 'Country', 'City', 'Habitat' ");
+        }
+    }
     //method can be overwritten in subclasses
     public String printDetails(){
         return "Scope: "+scope+"\nName "+name+"\ndescription "+description;
