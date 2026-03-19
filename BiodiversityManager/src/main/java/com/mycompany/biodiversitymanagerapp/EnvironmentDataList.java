@@ -4,11 +4,14 @@
  */
 package com.mycompany.biodiversitymanagerapp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author moise
  */
-public class EnvironmentDataList implements EDInterface {
+//implementation of Singly Linked List EnvironmentDataList
+public class EnvironmentDataList implements EDInterface, Serializable {
 
     //variables
     private ENode head, currENode, prevENode;
@@ -28,6 +31,7 @@ public class EnvironmentDataList implements EDInterface {
         //add data to the head on the first position
         if (iPosition == 1) {
             ENode newENode = new ENode(theData, head);
+            head=newENode;
         } else {
             //add newNode to position found by setCurrent method
             setCurrent(iPosition);
@@ -59,10 +63,15 @@ public class EnvironmentDataList implements EDInterface {
         setCurrent(iPosition);
         return currENode;
     }
+    
     //remove a ENode at a specified position
+    @Override
     public void remove(int iPosition) {
+        if(iSize==0){
+            System.out.println("There is nothing to remove");
+        }
         //remove the first ENode
-        if(iPosition==1){
+        else if(iPosition==1){
             //the head will now be the next ENode
             head=head.getNext();
         }else{
@@ -72,6 +81,7 @@ public class EnvironmentDataList implements EDInterface {
             prevENode.setNext(currENode.getNext());
             
         }
+        iSize-=1;
         
     }
     //method to see if Singly Linked List EnvironmentDataList is empty
@@ -102,13 +112,13 @@ public class EnvironmentDataList implements EDInterface {
 
         }
     }
-    //method prints out the content of the Singly Linked List
+    //method prints out the Environment data stored in the Singly Linked List ENode
     @Override
     public void printList() {
         ENode tempENode=head;
         //while loop continues from first position until it iterates through the whole list
         while(tempENode!=null){
-            System.out.print(tempENode.toString());
+            System.out.print(tempENode.toString()+"\n");
             tempENode=tempENode.getNext();
         }
     }

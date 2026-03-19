@@ -8,15 +8,8 @@ package com.mycompany.biodiversitymanagerapp;
  *
  * @author moise
  */
-//interface for Priority Queue PQEnvironment
-public interface PEInterface{
-    public void enqueue(int iPriorityKey, Object theData);
+public interface FileManagementInterface {
+    public void save();
+    public void load();
     
-    public int size();
-    
-    public boolean isEmpty();
-    
-    public Object dequeue();
-    
-    public  String printPEQueue();
 }
