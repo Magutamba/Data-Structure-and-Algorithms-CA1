@@ -29,7 +29,8 @@ public class FileManagement {
     }
 
     //load meathod load the files with ADT data, using Java generic type to allow all ADT's to be saved,
-    //adt is returned if load fails so it can continue safely
+    //<T> preserve the type a when called
+    //adt variable is returned if load fails so it can continue safely
     @SuppressWarnings("uncheked")//stop Java from warning me
     public static <T> T load(String fileName, T adt) {
         try (ObjectInputStream oStream = new ObjectInputStream(new FileInputStream(fileName))) {
@@ -50,4 +51,5 @@ public class FileManagement {
 
         }
     }
+    
 }
