@@ -4,13 +4,15 @@
  */
 package com.mycompany.biodiversitymanagerapp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author moise
  */
 //code to make an Environment data node ENode
-public class ENode {
-    //variable
+public class ENode implements Serializable{
+    //variables
     private Object data;
     private ENode next;
     

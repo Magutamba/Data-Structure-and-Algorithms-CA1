@@ -35,6 +35,7 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
         priorityEnvironmentBtn = new javax.swing.JButton();
         environmentDataBtn = new javax.swing.JButton();
         climateActionBtn = new javax.swing.JButton();
+        exitBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +66,14 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
             }
         });
 
+        exitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        exitBtn.setText("Exit");
+        exitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,7 +90,10 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
                         .addGap(107, 107, 107))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(233, 233, 233))))
+                        .addGap(233, 233, 233))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(exitBtn)
+                        .addGap(351, 351, 351))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +105,9 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
                     .addComponent(priorityEnvironmentBtn)
                     .addComponent(climateActionBtn)
                     .addComponent(environmentDataBtn))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addComponent(exitBtn)
+                .addGap(131, 131, 131))
         );
 
         pack();
@@ -116,6 +130,11 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
         new ClimateActionGUI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_climateActionBtnActionPerformed
+
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,6 +164,7 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton climateActionBtn;
     private javax.swing.JButton environmentDataBtn;
+    private javax.swing.JButton exitBtn;
     private javax.swing.JButton priorityEnvironmentBtn;
     private javax.swing.JTextField title;
     // End of variables declaration//GEN-END:variables

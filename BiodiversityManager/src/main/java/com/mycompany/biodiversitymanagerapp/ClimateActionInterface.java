@@ -10,7 +10,7 @@ package com.mycompany.biodiversitymanagerapp;
  */
 //interface for Doubly Linked List ClimateActionList
 public interface ClimateActionInterface {
-    public void add(int iPosition,Object theData);
+    public void add(int iPosition,Object data);
     
     public Object get(int iPosition);
     
