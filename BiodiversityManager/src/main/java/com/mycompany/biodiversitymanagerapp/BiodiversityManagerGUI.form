@@ -35,12 +35,12 @@
                       <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="title" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
                       <Component id="exitBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="titleLbl" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -49,15 +49,15 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="title" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="titleLbl" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="priorityEnvironmentBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="climateActionBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="environmentDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="161" max="32767" attributes="0"/>
+              <EmptySpace pref="155" max="32767" attributes="0"/>
               <Component id="exitBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
           </Group>
@@ -65,14 +65,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="title">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="18" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Biodiversity Manager Main Page"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="priorityEnvironmentBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -116,6 +108,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitBtnActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="titleLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Biodiversity Manager Main Page"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

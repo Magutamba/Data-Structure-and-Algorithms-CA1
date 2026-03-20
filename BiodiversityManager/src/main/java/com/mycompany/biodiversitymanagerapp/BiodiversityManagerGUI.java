@@ -33,16 +33,13 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new javax.swing.JTextField();
         priorityEnvironmentBtn = new javax.swing.JButton();
         environmentDataBtn = new javax.swing.JButton();
         climateActionBtn = new javax.swing.JButton();
         exitBtn = new javax.swing.JButton();
+        titleLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        title.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        title.setText("Biodiversity Manager Main Page");
 
         priorityEnvironmentBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         priorityEnvironmentBtn.setText("Priority Environment");
@@ -76,6 +73,9 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
             }
         });
 
+        titleLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        titleLbl.setText("Biodiversity Manager Main Page");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,23 +91,23 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
                         .addComponent(climateActionBtn)
                         .addGap(107, 107, 107))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(233, 233, 233))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(exitBtn)
-                        .addGap(349, 349, 349))))
+                        .addGap(349, 349, 349))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(titleLbl)
+                        .addGap(249, 249, 249))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168)
+                .addGap(22, 22, 22)
+                .addComponent(titleLbl)
+                .addGap(178, 178, 178)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priorityEnvironmentBtn)
                     .addComponent(climateActionBtn)
                     .addComponent(environmentDataBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(exitBtn)
                 .addGap(131, 131, 131))
         );
@@ -168,6 +168,6 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
     private javax.swing.JButton environmentDataBtn;
     private javax.swing.JButton exitBtn;
     private javax.swing.JButton priorityEnvironmentBtn;
-    private javax.swing.JTextField title;
+    private javax.swing.JLabel titleLbl;
     // End of variables declaration//GEN-END:variables
 }

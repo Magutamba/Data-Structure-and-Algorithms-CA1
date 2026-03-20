@@ -27,28 +27,26 @@
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="descriptionLbl" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="descriptionTF" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scopeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="nameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="nameTF" max="32767" attributes="0"/>
+                          <Component id="scopeTF" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="scopeLbl" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="scopeTF" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="nameLbl" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="nameTF" min="-2" pref="181" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="reasonLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="priorityLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="descriptionLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="reasonTF" max="32767" attributes="0"/>
+                          <Component id="descriptionTF" max="32767" attributes="0"/>
+                          <Component id="reasonTF" pref="143" max="32767" attributes="0"/>
                           <Component id="priorityTF" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -74,15 +72,21 @@
                       <Component id="exitBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="removeBtn" min="-2" max="-2" attributes="0"/>
-                      <Component id="clearBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="clearBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="getHighestPriorityEnvironment" alignment="1" min="-2" pref="290" max="-2" attributes="0"/>
-                  <Component id="sizeBtn" alignment="1" min="-2" pref="290" max="-2" attributes="0"/>
-                  <Component id="printQueueBtn" alignment="1" min="-2" pref="290" max="-2" attributes="0"/>
-                  <Component id="searchBtn" alignment="1" min="-2" pref="290" max="-2" attributes="0"/>
-                  <Component id="insertPriorityEnvironment" alignment="1" min="-2" pref="290" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="searchBtn" max="32767" attributes="0"/>
+                          <Component id="insertPriorityEnvironment" max="32767" attributes="0"/>
+                          <Component id="printQueueBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="sizeBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="getHighestPriorityEnvironment" alignment="0" max="32767" attributes="0"/>
+                          <Component id="removeBtn" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
       </Group>
@@ -139,7 +143,7 @@
               <Component id="searchBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Component id="printQueueBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="sizeBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="getHighestPriorityEnvironment" min="-2" max="-2" attributes="0"/>
@@ -147,7 +151,7 @@
               <Component id="removeBtn" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="clearBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="exitBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="climateActionBtn" alignment="3" min="-2" max="-2" attributes="0"/>

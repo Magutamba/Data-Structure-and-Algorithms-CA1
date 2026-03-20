@@ -41,14 +41,14 @@ public class FileManagement implements FileManagementInterface {
 
         } catch (FileNotFoundException e) {
             
-            System.out.println("The data file" + fileName+", was not found. Save before loading a file.");
+            System.out.println("The data file " + fileName+", was not found. Save before loading a file.");
             return adt;
         
         }catch (ClassNotFoundException e) {
             System.out.println("An error occurred while reading the file. Ensure the class matches the saved data");
             return adt;
         } catch (IOException e) {
-            System.out.println("An error occurred while reading the file." + e.getMessage());
+            //System.out.println("An error occurred while reading the file." + e.getMessage());
             return adt;
 
         }

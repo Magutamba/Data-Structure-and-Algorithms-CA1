@@ -45,6 +45,6 @@ public class PriorityEnvironment extends BiodiversityManager implements Serializ
     //override the method with the PriorityEnvironment variable
     @Override
     public String printDetails() {
-        return super.printDetails()+"Reason for priority set: "+reason;
+        return super.printDetails()+"\nReason for priority set: "+reason;
     } 
 }

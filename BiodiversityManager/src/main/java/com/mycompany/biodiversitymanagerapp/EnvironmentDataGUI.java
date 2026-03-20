@@ -305,18 +305,17 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
                             .addComponent(urbanHeatTemperatureLbl))
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(scopeTF, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                                .addComponent(nameTF))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(soilQualityIndexTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                .addComponent(waterQualityIndexTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(urbanHeatTemperatureTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(treeCoveragePercentageTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(airQualityIndexTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(biodiversityIndexTF, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addComponent(descriptionTF, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                .addComponent(soilQualityIndexTF, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                .addComponent(waterQualityIndexTF)
+                                .addComponent(urbanHeatTemperatureTF)
+                                .addComponent(treeCoveragePercentageTF)
+                                .addComponent(airQualityIndexTF)
+                                .addComponent(nameTF)
+                                .addComponent(biodiversityIndexTF))
+                            .addComponent(scopeTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -402,16 +401,16 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
                 .addComponent(sizeBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(priorityEnvironmentBtn)
                             .addComponent(climateActionBtn)
                             .addComponent(exitBtn)
                             .addComponent(mainPageBtn)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(clearBtn)
                         .addContainerGap(33, Short.MAX_VALUE))))
         );
@@ -512,7 +511,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     private void getEnvironmentDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getEnvironmentDataActionPerformed
         // TODO add your handling code here:
         int iPosition = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the index of the EnvironmentData you want: "));
-        displayTA.append("The Environmental data at " + iPosition + " is\n" + myEnvironmentData.get(iPosition));
+        displayTA.append("The Environmental data at " + iPosition + " position is\n" + myEnvironmentData.get(iPosition)+"\n");
     }//GEN-LAST:event_getEnvironmentDataActionPerformed
     //add Environmental data set by chosen scope such as Country to EnvironmentDataList
     private void addDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataBtnActionPerformed
@@ -534,8 +533,15 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             Country co = new Country(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
 
             //handle validation
-            co.validCommon();
-            co.validate();
+            try {
+                co.validCommon();
+                co.validate();
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+                //stop method if validation fails
+                return;
+            }
+
             myEnvironmentData.add(co);
 
             //save to "EnvironmentData.dat"
@@ -548,8 +554,14 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             City ci = new City(urbanHeatTemperature, airQualityIndex, treeCoveragePercentage, waterQualityIndex, scope, name, description);
 
             //handle validation
-            ci.validCommon();
-            ci.validate();
+            try {
+                ci.validCommon();
+                ci.validate();
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+                //stop method if validation fails
+                return;
+            }
             myEnvironmentData.add(ci);
 
             //save to "EnvironmentData.dat"
@@ -561,9 +573,15 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
 
             //declare new object and set variables
             Habitat h = new Habitat(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
-            //handle validation
-            h.validCommon();
-            h.validate();
+            try {
+                //handle validation
+                h.validCommon();
+                h.validate();
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+                //stop method if validation fails
+                return;
+            }
             myEnvironmentData.add(h);
             //save to "EnvironmentData.dat"
             fileManager.save(myEnvironmentData, "EnvironmentData.dat");
@@ -590,9 +608,16 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             double soilQualityIndex = Double.parseDouble(soilQualityIndexTF.getText());
             //initialize Country with its variables
             Country co = new Country(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
-            //handle validation
-            co.validCommon();
-            co.validate();
+            
+            try {
+                //handle validation
+                co.validCommon();
+                co.validate();
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+                //stop method if validation fails
+                return;
+            }
             myEnvironmentData.add(pos, co);
             //save to "EnvironmentData.dat"
             fileManager.save(myEnvironmentData, "EnvironmentData.dat");
@@ -601,9 +626,16 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             double urbanHeatTemperature = Double.parseDouble(urbanHeatTemperatureTF.getText());
             //initialize City with its variables
             City ci = new City(urbanHeatTemperature, airQualityIndex, treeCoveragePercentage, waterQualityIndex, scope, name, description);
-            //handle validation
-            ci.validCommon();
-            ci.validate();
+
+            try {
+                //handle validation
+                ci.validCommon();
+                ci.validate();
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+                //stop method if validation fails
+                return;
+            }
             myEnvironmentData.add(pos, ci);
             //save to "EnvironmentData.dat"
             fileManager.save(myEnvironmentData, "EnvironmentData.dat");
@@ -615,9 +647,15 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             //initialize Habitat with its variables
             Habitat h = new Habitat(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
 
-            //handle validation
-            h.validCommon();
-            h.validate();
+            try {
+                //handle validation
+                h.validCommon();
+                h.validate();
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+                //stop method if validation fails
+                return;
+            }
             myEnvironmentData.add(pos, h);
 
             //save to "EnvironmentData.dat"
@@ -668,7 +706,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             displayTA.append("The Environment List as no Environment Data stored.\n");
         } else {
             int iNumber = myEnvironmentData.size();
-            displayTA.append("There are " + iNumber + " of Environment Data stored.\n");
+            displayTA.append("There are " + iNumber + " number of Environment Data stored.\n");
         }
     }//GEN-LAST:event_sizeBtnActionPerformed
     //search for an Environment Data by name

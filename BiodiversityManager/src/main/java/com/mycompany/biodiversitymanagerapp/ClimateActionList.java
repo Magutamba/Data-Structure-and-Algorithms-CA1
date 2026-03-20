@@ -60,7 +60,7 @@ public class ClimateActionList implements ClimateActionInterface, Serializable {
     public Object get(int iPosition) {
         //get the position of CANode
         setCurrent(iPosition);
-        return currCANode;
+        return currCANode.getData();
     }
 
     //move to next CANode

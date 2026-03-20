@@ -43,6 +43,7 @@ public class PQEnvironment implements PEInterface, Serializable {
         if(!thePEQueue.isEmpty()){
             return thePEQueue.get(0).getData();
         }else{
+            //stop method to prevent crash by runtime exception
             return null;
         }
     }
@@ -50,6 +51,10 @@ public class PQEnvironment implements PEInterface, Serializable {
     //remove the data with the highest priority
     @Override
     public Object dequeue() {
+        if(thePEQueue.isEmpty()){
+            //stop method to prevent crash by runtime exception
+            return null;
+        }
         return thePEQueue.remove(0).getData();
     }
 
@@ -71,7 +76,7 @@ public class PQEnvironment implements PEInterface, Serializable {
         for(int index=0; index<thePEQueue.size(); index++){
             PQEData curData=thePEQueue.get(index);
             if(curData.getiKey()==inewPriorityKey){
-                return curData;
+                return curData.getData();
             }
         }
         return null;// if nothing found
@@ -103,7 +108,7 @@ public class PQEnvironment implements PEInterface, Serializable {
         for (int iCount = 0; iCount < thePEQueue.size(); iCount++) {
             curData = thePEQueue.get(iCount);
             msg = msg.concat("Priority = " + curData.getiKey() + 
-                    "Data = " + curData.getData() + "\n");
+                    " Data: \n" + curData.getData() + "\n");
         }
         return msg;
     }

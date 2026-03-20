@@ -67,7 +67,7 @@ public class BiodiversityManager {
     
     //method for displaying details will be overwritten in subclasses
     public String printDetails(){
-        return "Scope: "+scope+"\nName "+name+"\ndescription "+description;
+        return "Scope: "+scope+"\nName: "+name+"\nDescription: "+description;
     }
     
     //use my own toString() implementation rather than Java default toString() for objects

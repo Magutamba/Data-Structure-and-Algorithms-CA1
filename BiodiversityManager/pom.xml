@@ -8,6 +8,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
-        <exec.mainClass>com.mycompany.biodiversitymanager.BiodiversityManagerApp</exec.mainClass>
+        <exec.mainClass>com.mycompany.biodiversitymanagerapp.BiodiversityManagerApp</exec.mainClass>
     </properties>
 </project>
