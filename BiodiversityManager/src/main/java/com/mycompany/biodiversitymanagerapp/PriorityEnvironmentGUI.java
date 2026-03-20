@@ -5,6 +5,9 @@
 package com.mycompany.biodiversitymanagerapp;
 
 import java.awt.Color;
+import com.mycompany.biodiversitymanagerapp.EnvironmentDataGUI;
+import com.mycompany.biodiversitymanagerapp.ClimateActionGUI;
+import com.mycompany.biodiversitymanagerapp.BiodiversityManagerGUI;
 
 /**
  *
@@ -51,6 +54,7 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         reasonTF = new javax.swing.JTextField();
         priorityLbl = new javax.swing.JLabel();
         priorityTF = new javax.swing.JTextField();
+        mainPageBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +64,11 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         exitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         exitBtn.setText("Exit");
         exitBtn.setActionCommand("exitBtn");
+        exitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtnActionPerformed(evt);
+            }
+        });
 
         scopeLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         scopeLbl.setText("Scope");
@@ -76,6 +85,11 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         climateActionBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         climateActionBtn.setText("Climate Action");
         climateActionBtn.setActionCommand("climateActionBtn");
+        climateActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                climateActionBtnActionPerformed(evt);
+            }
+        });
 
         environmentDataBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         environmentDataBtn.setText("Environment Data");
@@ -110,6 +124,14 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         priorityLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         priorityLbl.setText("Set Priority");
 
+        mainPageBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        mainPageBtn.setText("Main Page");
+        mainPageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainPageBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,6 +140,8 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(mainPageBtn)
+                        .addGap(18, 18, 18)
                         .addComponent(environmentDataBtn)
                         .addGap(18, 18, 18)
                         .addComponent(climateActionBtn)
@@ -129,16 +153,13 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
                         .addGap(240, 240, 240))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(title)
-                        .addGap(283, 283, 283))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165))))
+                        .addGap(283, 283, 283))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(insertPriorityEnvironment)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(printListBtn)
                         .addGap(18, 18, 18)
                         .addComponent(sizeBtn))
@@ -164,7 +185,11 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(reasonTF)
                                     .addComponent(priorityTF))))
-                        .addGap(369, 369, 369)))
+                        .addGap(429, 429, 429))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,7 +204,7 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(scopeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -195,36 +220,51 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
                     .addComponent(reasonTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(priorityLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(printListBtn)
-                            .addComponent(sizeBtn)
-                            .addComponent(insertPriorityEnvironment))
-                        .addGap(18, 18, 18)
-                        .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(exitBtn)
-                            .addComponent(climateActionBtn)
-                            .addComponent(environmentDataBtn))
-                        .addGap(9, 9, 9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(priorityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(priorityLbl)
+                    .addComponent(priorityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(printListBtn)
+                    .addComponent(sizeBtn)
+                    .addComponent(insertPriorityEnvironment))
+                .addGap(18, 18, 18)
+                .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exitBtn)
+                    .addComponent(climateActionBtn)
+                    .addComponent(environmentDataBtn)
+                    .addComponent(mainPageBtn))
+                .addGap(9, 9, 9))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //go to Environment Data section
     private void environmentDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_environmentDataBtnActionPerformed
         // TODO add your handling code here:
-        new EnvironmentDataGUI.setVisible(true);
+        new EnvironmentDataGUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_environmentDataBtnActionPerformed
+    //go back to BiodiversityManager app main page 
+    private void mainPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainPageBtnActionPerformed
+        // TODO add your handling code here:
+        new BiodiversityManagerGUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mainPageBtnActionPerformed
+    //go to Climate Action Section
+    private void climateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climateActionBtnActionPerformed
+        // TODO add your handling code here:
+        new ClimateActionGUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_climateActionBtnActionPerformed
+    //exit from the application
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,6 +300,7 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
     private javax.swing.JButton exitBtn;
     private javax.swing.JButton insertPriorityEnvironment;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton mainPageBtn;
     private javax.swing.JLabel nameLbl;
     private javax.swing.JTextField nameTF;
     private javax.swing.JButton printListBtn;

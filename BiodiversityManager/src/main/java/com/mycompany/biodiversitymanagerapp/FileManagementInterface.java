@@ -9,7 +9,7 @@ package com.mycompany.biodiversitymanagerapp;
  * @author moise
  */
 public interface FileManagementInterface {
-    public void save();
-    public void load();
+    public void save(Object obj, String fileName);
+    public <T> T load(String fileName , T adt);
     
 }

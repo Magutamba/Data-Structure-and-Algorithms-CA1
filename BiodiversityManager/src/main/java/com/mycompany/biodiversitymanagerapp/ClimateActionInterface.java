@@ -16,9 +16,15 @@ public interface ClimateActionInterface {
     
     public void remove(int iPosition);
     
+    public Object next();
+    
+    public Object prev();
+    
     public int size();
     
     public boolean isEmpty();
     
     public String printList();
+    
+    //public String printListBwd();
 }

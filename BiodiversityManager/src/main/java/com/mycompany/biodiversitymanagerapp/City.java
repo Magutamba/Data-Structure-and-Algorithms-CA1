@@ -12,12 +12,11 @@ import java.io.Serializable;
  */
 public class City extends BiodiversityManager implements Serializable {
     //variable
-    private double urbanHeatTemperature;
-    private int airQualityIndex;
+    private double urbanHeatTemperature, airQualityIndex;
     private double treeCoveragePercentage,waterQualityIndex;
     
     //overloaded constructor sets City fields and calls the superclass constructor
-    public City(double urbanHeatTemperature, int airQualityIndex, double treeCoveragePercentage, double waterQualityIndex, String scope, String name, String description) {
+    public City(double urbanHeatTemperature, double airQualityIndex, double treeCoveragePercentage, double waterQualityIndex, String scope, String name, String description) {
         super(scope, name, description);
         this.urbanHeatTemperature = urbanHeatTemperature;
         this.airQualityIndex = airQualityIndex;
@@ -31,7 +30,7 @@ public class City extends BiodiversityManager implements Serializable {
         this.urbanHeatTemperature = urbanHeatTemperature;
     }
 
-    public void setAirQualityIndex(int airQualityIndex) {
+    public void setAirQualityIndex(double airQualityIndex) {
         this.airQualityIndex = airQualityIndex;
     }
 
@@ -49,7 +48,7 @@ public class City extends BiodiversityManager implements Serializable {
         return urbanHeatTemperature;
     }
 
-    public int getAirQualityIndex() {
+    public double getAirQualityIndex() {
         return airQualityIndex;
     }
 
@@ -61,20 +60,6 @@ public class City extends BiodiversityManager implements Serializable {
         return waterQualityIndex;
     }
     
-    //error handling for UrbanHeatTemperature
-    public void validUrbanHeatTemperature(){
-        if(urbanHeatTemperature<0 || urbanHeatTemperature>50){
-            throw new IllegalArgumentException("UrbanHeatTemperature must be greater than 1°C and 50°C");
-        }
-    }
-    
-    //error handling for air quality index
-    public void validAirQualityIndex(){
-        if(airQualityIndex<0 || airQualityIndex>10){
-            throw new IllegalArgumentException("Air Quality  Index can only be between 0 and 10");
-        }
-    }
-    
     //error handling for treeCoveragePercentage
     public void validTreeCoveragePercentage(){
         if(treeCoveragePercentage<0 || treeCoveragePercentage>100){
@@ -83,12 +68,34 @@ public class City extends BiodiversityManager implements Serializable {
     }
     
     //error handling for WaterQualityIndex
-    public void validWaterQualityIndex(){
+    public void validWaterQualityIndex(double waterQualityIndex){
         if(waterQualityIndex<0 || waterQualityIndex>100){
             throw new IllegalArgumentException("Water Quality Index can only be between 0 and 100");
         }
     }
-    
+    //override with City specific validation
+    @Override
+    protected void validate(){
+        //error handling for UrbanHeatTemperature
+        if(urbanHeatTemperature<0 || urbanHeatTemperature>50){
+            throw new IllegalArgumentException("UrbanHeatTemperature must be greater than 1°C and 50°C");
+        }
+        
+        //error handling for air quality index
+        if(airQualityIndex<0 || airQualityIndex>10){
+            throw new IllegalArgumentException("Air Quality  Index can only be between 0 and 10");
+        }
+        
+        //error handling for treeCoveragePercentage
+        if(treeCoveragePercentage<0 || treeCoveragePercentage>100){
+            throw new IllegalArgumentException("Tree Coverage Percentage can only be between 0 and 100");
+        }
+        
+        //error handling for WaterQualityIndex
+        if(waterQualityIndex<0 || waterQualityIndex>100){
+            throw new IllegalArgumentException("Water Quality Index can only be between 0 and 100");
+        }
+    }
     //override to onto the method City variables
     @Override
     public String printDetails() {

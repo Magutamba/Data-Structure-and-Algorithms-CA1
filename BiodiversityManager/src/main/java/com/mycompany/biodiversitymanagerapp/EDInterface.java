@@ -22,5 +22,5 @@ public interface EDInterface {
     
     public int size();
     
-    public void printList();   
+    public String printList();   
 }

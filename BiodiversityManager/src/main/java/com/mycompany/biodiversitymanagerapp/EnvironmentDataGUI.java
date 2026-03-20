@@ -4,19 +4,48 @@
  */
 package com.mycompany.biodiversitymanagerapp;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author moise
  */
 public class EnvironmentDataGUI extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EnvironmentDataGUI.class.getName());
+    private EDInterface myEnvironmentData;
+    //variable to use FileManagementInterface
+    private FileManagementInterface fileManager;
 
     /**
      * Creates new form EnvironmentDataGUI
      */
     public EnvironmentDataGUI() {
+        fileManager = new FileManagement();//initialize a new FileManagement
+        //new EnvironmentDataList, if file exists it loads otherwise it will default to a new list
+        myEnvironmentData = fileManager.load("EnvironmentData.dat", new EnvironmentDataList());
         initComponents();
+        this.getContentPane().setBackground(Color.green);
+        scopeLbl.setVisible(true);
+        scopeTF.setVisible(true);
+        nameLbl.setVisible(true);
+        nameTF.setVisible(true);
+        descriptionLbl.setVisible(true);
+        descriptionTF.setVisible(true);
+        biodiversityIndexLbl.setVisible(false);
+        biodiversityIndexTF.setVisible(false);
+        airQualityIndexLbl.setVisible(false);
+        airQualityIndexTF.setVisible(false);
+        treeCoveragePercentageLbl.setVisible(false);
+        treeCoveragePercentageTF.setVisible(false);
+        urbanHeatTemperatureLbl.setVisible(false);
+        urbanHeatTemperatureTF.setVisible(false);
+        waterQualityIndexLbl.setVisible(false);
+        waterQualityIndexTF.setVisible(false);
+        soilQualityIndexLbl.setVisible(true);
+        soilQualityIndexTF.setVisible(true);
+
     }
 
     /**
@@ -28,21 +57,663 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        title = new javax.swing.JLabel();
+        exitBtn = new javax.swing.JButton();
+        priorityEnvironmentBtn = new javax.swing.JButton();
+        climateActionBtn = new javax.swing.JButton();
+        countryRB = new javax.swing.JRadioButton();
+        cityRB = new javax.swing.JRadioButton();
+        habitatRB = new javax.swing.JRadioButton();
+        scopeLbl = new javax.swing.JLabel();
+        scopeTF = new javax.swing.JTextField();
+        nameLbl = new javax.swing.JLabel();
+        nameTF = new javax.swing.JTextField();
+        descriptionTF = new javax.swing.JTextField();
+        descriptionLbl = new javax.swing.JLabel();
+        biodiversityIndexLbl = new javax.swing.JLabel();
+        biodiversityIndexTF = new javax.swing.JTextField();
+        airQualityIndexLbl = new javax.swing.JLabel();
+        airQualityIndexTF = new javax.swing.JTextField();
+        treeCoveragePercentageLbl = new javax.swing.JLabel();
+        soilQualityIndexLbl = new javax.swing.JLabel();
+        waterQualityIndexLbl = new javax.swing.JLabel();
+        urbanHeatTemperatureLbl = new javax.swing.JLabel();
+        treeCoveragePercentageTF = new javax.swing.JTextField();
+        urbanHeatTemperatureTF = new javax.swing.JTextField();
+        waterQualityIndexTF = new javax.swing.JTextField();
+        soilQualityIndexTF = new javax.swing.JTextField();
+        getEnvironmentData = new javax.swing.JButton();
+        printListBtn = new javax.swing.JButton();
+        addDataBtn = new javax.swing.JButton();
+        removeBtn = new javax.swing.JButton();
+        insertEnvironmentData = new javax.swing.JButton();
+        sizeBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        displayTA = new javax.swing.JTextArea();
+        mainPageBtn = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        title.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        title.setText("Environment Data");
+
+        exitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        exitBtn.setText("Exit");
+        exitBtn.setActionCommand("exitBtn");
+        exitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtnActionPerformed(evt);
+            }
+        });
+
+        priorityEnvironmentBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        priorityEnvironmentBtn.setText("Priority Environment");
+        priorityEnvironmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priorityEnvironmentBtnActionPerformed(evt);
+            }
+        });
+
+        climateActionBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        climateActionBtn.setText("Climate Action");
+        climateActionBtn.setActionCommand("climateActionBtn");
+        climateActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                climateActionBtnActionPerformed(evt);
+            }
+        });
+
+        countryRB.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        countryRB.setText("Country");
+        countryRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countryRBActionPerformed(evt);
+            }
+        });
+
+        cityRB.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        cityRB.setText("City");
+        cityRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityRBActionPerformed(evt);
+            }
+        });
+
+        habitatRB.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        habitatRB.setText("Habitat");
+        habitatRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                habitatRBActionPerformed(evt);
+            }
+        });
+
+        scopeLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        scopeLbl.setText("Scope");
+
+        scopeTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        nameLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        nameLbl.setText("Name of chosen focus");
+
+        nameTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        descriptionTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        descriptionLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        descriptionLbl.setText(" Description of Environment");
+
+        biodiversityIndexLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        biodiversityIndexLbl.setText("Biodiversity Index");
+
+        biodiversityIndexTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        airQualityIndexLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        airQualityIndexLbl.setText("Air Quality Index");
+
+        airQualityIndexTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        treeCoveragePercentageLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        treeCoveragePercentageLbl.setText("Tree Coverage Percentage");
+
+        soilQualityIndexLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        soilQualityIndexLbl.setText("Soil Quality Index");
+
+        waterQualityIndexLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        waterQualityIndexLbl.setText("Water Quality Index");
+
+        urbanHeatTemperatureLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        urbanHeatTemperatureLbl.setText("urbanHeatTemperature");
+
+        treeCoveragePercentageTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        urbanHeatTemperatureTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        waterQualityIndexTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        soilQualityIndexTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        getEnvironmentData.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        getEnvironmentData.setText("Get Environment Data");
+        getEnvironmentData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getEnvironmentDataActionPerformed(evt);
+            }
+        });
+
+        printListBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        printListBtn.setText("Display All Environmental Data");
+        printListBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printListBtnActionPerformed(evt);
+            }
+        });
+
+        addDataBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        addDataBtn.setText("Add Environment Data");
+        addDataBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDataBtnActionPerformed(evt);
+            }
+        });
+
+        removeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        removeBtn.setText("Remove Environment Data");
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBtnActionPerformed(evt);
+            }
+        });
+
+        insertEnvironmentData.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        insertEnvironmentData.setText("Insert Environment Data");
+        insertEnvironmentData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertEnvironmentDataActionPerformed(evt);
+            }
+        });
+
+        sizeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sizeBtn.setText("Number of Environment Data Stored");
+        sizeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sizeBtnActionPerformed(evt);
+            }
+        });
+
+        displayTA.setColumns(20);
+        displayTA.setRows(5);
+        jScrollPane1.setViewportView(displayTA);
+
+        mainPageBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        mainPageBtn.setText("Main Page");
+        mainPageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainPageBtnActionPerformed(evt);
+            }
+        });
+
+        searchBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        searchBtn.setText("Search for Environment Data");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        clearBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(title)
+                .addGap(218, 218, 218)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(habitatRB)
+                    .addComponent(cityRB)
+                    .addComponent(countryRB))
+                .addGap(11, 11, 11))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scopeLbl)
+                            .addComponent(nameLbl)
+                            .addComponent(descriptionLbl)
+                            .addComponent(biodiversityIndexLbl)
+                            .addComponent(airQualityIndexLbl)
+                            .addComponent(treeCoveragePercentageLbl)
+                            .addComponent(soilQualityIndexLbl)
+                            .addComponent(waterQualityIndexLbl)
+                            .addComponent(urbanHeatTemperatureLbl))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(scopeTF, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                .addComponent(nameTF))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(soilQualityIndexTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                .addComponent(waterQualityIndexTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(urbanHeatTemperatureTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(treeCoveragePercentageTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(airQualityIndexTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(biodiversityIndexTF, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(insertEnvironmentData)
+                                    .addComponent(printListBtn)
+                                    .addComponent(removeBtn)
+                                    .addComponent(sizeBtn)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(getEnvironmentData)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(clearBtn))
+                                    .addComponent(addDataBtn)
+                                    .addComponent(searchBtn))
+                                .addGap(49, 49, 49))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(mainPageBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(priorityEnvironmentBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(climateActionBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(exitBtn)))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(title)
+                    .addComponent(countryRB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cityRB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(habitatRB)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(scopeLbl)
+                        .addComponent(scopeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameLbl)
+                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descriptionLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(biodiversityIndexLbl)
+                            .addComponent(biodiversityIndexTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(airQualityIndexTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(airQualityIndexLbl)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(treeCoveragePercentageLbl)
+                    .addComponent(treeCoveragePercentageTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(getEnvironmentData)
+                    .addComponent(clearBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(urbanHeatTemperatureLbl)
+                    .addComponent(urbanHeatTemperatureTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addDataBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(insertEnvironmentData)
+                    .addComponent(waterQualityIndexLbl)
+                    .addComponent(waterQualityIndexTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(printListBtn)
+                    .addComponent(soilQualityIndexLbl)
+                    .addComponent(soilQualityIndexTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(removeBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sizeBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priorityEnvironmentBtn)
+                    .addComponent(climateActionBtn)
+                    .addComponent(exitBtn)
+                    .addComponent(mainPageBtn))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    //go back to BiodiversityManager app main page 
+    private void mainPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainPageBtnActionPerformed
+        // TODO add your handling code here:
+        new BiodiversityManagerGUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mainPageBtnActionPerformed
+    //go to Priority Environment section 
+    private void priorityEnvironmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityEnvironmentBtnActionPerformed
+        // TODO add your handling code here:
+        new PriorityEnvironmentGUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
+    //go to Climate Action Section
+    private void climateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climateActionBtnActionPerformed
+        // TODO add your handling code here:
+        new ClimateActionGUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_climateActionBtnActionPerformed
+    //exit from the application
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitBtnActionPerformed
+
+    private void countryRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryRBActionPerformed
+        // TODO add your handling code here:
+        scopeLbl.setVisible(true);
+        scopeTF.setVisible(true);
+        nameLbl.setVisible(true);
+        nameTF.setVisible(true);
+        descriptionLbl.setVisible(true);
+        descriptionTF.setVisible(true);
+        biodiversityIndexLbl.setVisible(true);
+        biodiversityIndexTF.setVisible(true);
+        airQualityIndexLbl.setVisible(true);
+        airQualityIndexTF.setVisible(true);
+        treeCoveragePercentageLbl.setVisible(true);
+        treeCoveragePercentageTF.setVisible(true);
+        urbanHeatTemperatureLbl.setVisible(false);
+        urbanHeatTemperatureTF.setVisible(false);
+        waterQualityIndexLbl.setVisible(true);
+        waterQualityIndexTF.setVisible(true);
+        soilQualityIndexLbl.setVisible(true);
+        soilQualityIndexTF.setVisible(true);
+
+    }//GEN-LAST:event_countryRBActionPerformed
+
+    private void cityRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityRBActionPerformed
+        // TODO add your handling code here:
+        scopeLbl.setVisible(true);
+        scopeTF.setVisible(true);
+        nameLbl.setVisible(true);
+        nameTF.setVisible(true);
+        descriptionLbl.setVisible(true);
+        descriptionTF.setVisible(true);
+        biodiversityIndexLbl.setVisible(false);
+        biodiversityIndexTF.setVisible(false);
+        airQualityIndexLbl.setVisible(true);
+        airQualityIndexTF.setVisible(true);
+        treeCoveragePercentageLbl.setVisible(true);
+        treeCoveragePercentageTF.setVisible(true);
+        urbanHeatTemperatureLbl.setVisible(true);
+        urbanHeatTemperatureTF.setVisible(true);
+        waterQualityIndexLbl.setVisible(true);
+        waterQualityIndexTF.setVisible(true);
+        soilQualityIndexLbl.setVisible(false);
+        soilQualityIndexTF.setVisible(false);
+    }//GEN-LAST:event_cityRBActionPerformed
+
+    private void habitatRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habitatRBActionPerformed
+        // TODO add your handling code here:
+        scopeLbl.setVisible(true);
+        scopeTF.setVisible(true);
+        nameLbl.setVisible(true);
+        nameTF.setVisible(true);
+        descriptionLbl.setVisible(true);
+        descriptionTF.setVisible(true);
+        biodiversityIndexLbl.setVisible(true);
+        biodiversityIndexTF.setVisible(true);
+        airQualityIndexLbl.setVisible(true);
+        airQualityIndexTF.setVisible(true);
+        treeCoveragePercentageLbl.setVisible(true);
+        treeCoveragePercentageTF.setVisible(true);
+        urbanHeatTemperatureLbl.setVisible(false);
+        urbanHeatTemperatureTF.setVisible(false);
+        waterQualityIndexLbl.setVisible(true);
+        waterQualityIndexTF.setVisible(true);
+        soilQualityIndexLbl.setVisible(true);
+        soilQualityIndexTF.setVisible(true);
+    }//GEN-LAST:event_habitatRBActionPerformed
+
+    private void getEnvironmentDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getEnvironmentDataActionPerformed
+        // TODO add your handling code here:
+        int iPosition = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the index of the EnvironmentData you want: "));
+        displayTA.append("The Environmental data at " + iPosition + " is\n" + myEnvironmentData.get(iPosition));
+    }//GEN-LAST:event_getEnvironmentDataActionPerformed
+    //add Environmental data set by chosen scope such as Country to EnvironmentDataList
+    private void addDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataBtnActionPerformed
+        // TODO add your handling code here:
+        //variables that are used by all three scope
+        String scope = scopeTF.getText();
+        String name = nameTF.getText();
+        String description = descriptionTF.getText();
+        int airQualityIndex = Integer.parseInt(airQualityIndexTF.getText());
+        double treeCoveragePercentage = Double.parseDouble(treeCoveragePercentageTF.getText());
+        double waterQualityIndex = Double.parseDouble(waterQualityIndexTF.getText());
+
+        //if Country specific Environmental Data is wanted
+        if (countryRB.isSelected()) {
+            double biodiversityIndex = Double.parseDouble(biodiversityIndexTF.getText());
+            double soilQualityIndex = Double.parseDouble(soilQualityIndexTF.getText());
+            //declare new object and set variables
+            Country co = new Country(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
+            //handle validation
+            co.validCommon();
+            co.validate();
+            myEnvironmentData.add(co);
+            //save to "EnvironmentData.dat"
+            fileManager.save(myEnvironmentData, "EnvironmentData.dat");
+        } //if city specific Environmental Data is wanted
+        else if (cityRB.isSelected()) {
+            double urbanHeatTemperature = Double.parseDouble(urbanHeatTemperatureTF.getText());
+            //declare new object and set variables
+            City ci = new City(urbanHeatTemperature, airQualityIndex, treeCoveragePercentage, waterQualityIndex, scope, name, description);
+            //handle validation
+            ci.validCommon();
+            ci.validate();
+            myEnvironmentData.add(ci);
+            //save to "EnvironmentData.dat"
+            fileManager.save(myEnvironmentData, "EnvironmentData.dat");
+        } //if habitat specific Environmental Data is wanted
+        else if (habitatRB.isSelected()) {
+            double biodiversityIndex = Double.parseDouble(biodiversityIndexTF.getText());
+            double soilQualityIndex = Double.parseDouble(soilQualityIndexTF.getText());
+
+            //declare new object and set variables
+            Habitat h = new Habitat(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
+            //handle validation
+            h.validCommon();
+            h.validate();
+            myEnvironmentData.add(h);
+            //save to "EnvironmentData.dat"
+            fileManager.save(myEnvironmentData, "EnvironmentData.dat");
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Select a scope(Country, City, Habitat)");
+        }
+    }//GEN-LAST:event_addDataBtnActionPerformed
+    //insert Environmental data set by chosen scope such as Country at a specific position
+    private void insertEnvironmentDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertEnvironmentDataActionPerformed
+        // TODO add your handling code here:
+        //variables that are used by all three scope
+        String scope = scopeTF.getText();
+        String name = nameTF.getText();
+        String description = descriptionTF.getText();
+        int airQualityIndex = Integer.parseInt(airQualityIndexTF.getText());
+        double treeCoveragePercentage = Double.parseDouble(treeCoveragePercentageTF.getText());
+        double waterQualityIndex = Double.parseDouble(waterQualityIndexTF.getText());
+        int pos = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the position in the list you which to add the Environment data: "));
+
+        //if Country specific Environmental Data is wanted
+        if (countryRB.isSelected()) {
+            double biodiversityIndex = Double.parseDouble(biodiversityIndexTF.getText());
+            double soilQualityIndex = Double.parseDouble(soilQualityIndexTF.getText());
+            //declare new object and set variables
+            Country co = new Country(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
+            //handle validation
+            co.validCommon();
+            co.validate();
+            myEnvironmentData.add(pos, co);
+            //save to "EnvironmentData.dat"
+            fileManager.save(myEnvironmentData, "EnvironmentData.dat");
+        } //if city specific Environmental Data is wanted
+        else if (cityRB.isSelected()) {
+            double urbanHeatTemperature = Double.parseDouble(urbanHeatTemperatureTF.getText());
+            //declare new object and set variables
+            City ci = new City(urbanHeatTemperature, airQualityIndex, treeCoveragePercentage, waterQualityIndex, scope, name, description);
+            //handle validation
+            ci.validCommon();
+            ci.validate();
+            myEnvironmentData.add(pos, ci);
+            //save to "EnvironmentData.dat"
+            fileManager.save(myEnvironmentData, "EnvironmentData.dat");
+        } //if habitat specific Environmental Data is wanted
+        else if (habitatRB.isSelected()) {
+            double biodiversityIndex = Double.parseDouble(biodiversityIndexTF.getText());
+            double soilQualityIndex = Double.parseDouble(soilQualityIndexTF.getText());
+
+            //declare new object and set variables
+            Habitat h = new Habitat(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
+            //handle validation
+            h.validCommon();
+            h.validate();
+            myEnvironmentData.add(pos, h);
+            //save to "EnvironmentData.dat"
+            fileManager.save(myEnvironmentData, "EnvironmentData.dat");
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Select a scope(Country, City, Habitat)");
+        }
+
+
+    }//GEN-LAST:event_insertEnvironmentDataActionPerformed
+    //print all Environmental Data in the list
+    private void printListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printListBtnActionPerformed
+        // TODO add your handling code here:
+        //check if list is empty
+        if (myEnvironmentData.isEmpty()) {
+            displayTA.append("The Environment List as no Environment Data stored.\n");
+        } else {
+            
+            displayTA.append(myEnvironmentData.printList() + "\n");
+        }
+
+    }//GEN-LAST:event_printListBtnActionPerformed
+    //remove an Environmental Data at a specific position
+    private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
+        // TODO add your handling code here:
+        int pos = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the positon of the Environment Data to delete. "));
+        if (pos < 1) {
+            JOptionPane.showMessageDialog(this, "That is not a valid position must be a number greater than or equal to 1");
+        } else {
+            //check if list is empty
+            if (myEnvironmentData.isEmpty()) {
+                displayTA.append("The Environment List as no Environment Data store.\n");
+            } else {
+                myEnvironmentData.remove(pos);
+                fileManager.save(myEnvironmentData, "EnvironmentData.dat");
+                int iNumber = myEnvironmentData.size();
+                displayTA.append("The Environment Data stored at " + pos + " as been deleted.\n");
+            }
+        }
+    }//GEN-LAST:event_removeBtnActionPerformed
+    //get the size EnvironmentalDataList
+    private void sizeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeBtnActionPerformed
+        // TODO add your handling code here:
+        //check if list is empty
+        if (myEnvironmentData.isEmpty()) {
+            displayTA.append("The Environment List as no Environment Data store.\n");
+        } else {
+            int iNumber = myEnvironmentData.size();
+            displayTA.append("There are" + iNumber + " of Environment Data stored. \n");
+        }
+    }//GEN-LAST:event_sizeBtnActionPerformed
+    //search for an Environment Data by name
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+        String searchName = JOptionPane.showInputDialog(this, "Enter the name of the specific Environment to search for the data: ");
+        //exit early if there is an error
+        if (searchName == null) {
+            return;
+        }
+        //remove space to ensure accuracy of search
+        searchName=searchName.trim();
+        //if no name is entered
+        if (searchName.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "A name must be entered to search.");
+            return;
+        }
+        if (myEnvironmentData.isEmpty()) {
+            displayTA.append("The Environment List as no Environment Data to search for.\n");
+            //stop the method if list is empty
+            return;
+        }
+        //boolean variable to track whether Environment Data was found
+        boolean found = false;
+        //iterate through EnvironmentList
+        for (int iCount = 1; iCount <= myEnvironmentData.size(); iCount++) {
+            //get the environment data at icount
+            Object data = myEnvironmentData.get(iCount);
+
+            //check if data is an instance of BiodiversityManager or it's subclasses, if not skipp the rest of the code
+            if (!(data instanceof BiodiversityManager)) {
+                continue;
+            }
+            //cast data that is of type Object as BiodiversityManage and get access to its methods
+            BiodiversityManager tempData = (BiodiversityManager) data;
+
+            //if searchName matches a name in the list
+            if (tempData.getName() != null && tempData.getName().equalsIgnoreCase(searchName)) {
+                displayTA.append("The Environment data " + myEnvironmentData.get(iCount) + " was found at " + iCount + " position.\n");
+                found = true;
+            }
+
+        }
+
+        //if no Environment Data with that name was found in the list
+        if (!found) {
+            displayTA.append("There were no matches for " + searchName + " in the EnvironmentDataList\n");
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+        scopeTF.setText("");
+        nameTF.setVisible(true);
+        descriptionTF.setText("");
+        biodiversityIndexTF.setText("");
+        airQualityIndexTF.setText("");
+        treeCoveragePercentageTF.setText("");
+        urbanHeatTemperatureTF.setText("");
+        waterQualityIndexTF.setText("");
+        soilQualityIndexTF.setText("");
+        displayTA.setText("");
+    }//GEN-LAST:event_clearBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +741,41 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addDataBtn;
+    private javax.swing.JLabel airQualityIndexLbl;
+    private javax.swing.JTextField airQualityIndexTF;
+    private javax.swing.JLabel biodiversityIndexLbl;
+    private javax.swing.JTextField biodiversityIndexTF;
+    private javax.swing.JRadioButton cityRB;
+    private javax.swing.JButton clearBtn;
+    private javax.swing.JButton climateActionBtn;
+    private javax.swing.JRadioButton countryRB;
+    private javax.swing.JLabel descriptionLbl;
+    private javax.swing.JTextField descriptionTF;
+    private javax.swing.JTextArea displayTA;
+    private javax.swing.JButton exitBtn;
+    private javax.swing.JButton getEnvironmentData;
+    private javax.swing.JRadioButton habitatRB;
+    private javax.swing.JButton insertEnvironmentData;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton mainPageBtn;
+    private javax.swing.JLabel nameLbl;
+    private javax.swing.JTextField nameTF;
+    private javax.swing.JButton printListBtn;
+    private javax.swing.JButton priorityEnvironmentBtn;
+    private javax.swing.JButton removeBtn;
+    private javax.swing.JLabel scopeLbl;
+    private javax.swing.JTextField scopeTF;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JButton sizeBtn;
+    private javax.swing.JLabel soilQualityIndexLbl;
+    private javax.swing.JTextField soilQualityIndexTF;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel treeCoveragePercentageLbl;
+    private javax.swing.JTextField treeCoveragePercentageTF;
+    private javax.swing.JLabel urbanHeatTemperatureLbl;
+    private javax.swing.JTextField urbanHeatTemperatureTF;
+    private javax.swing.JLabel waterQualityIndexLbl;
+    private javax.swing.JTextField waterQualityIndexTF;
     // End of variables declaration//GEN-END:variables
 }

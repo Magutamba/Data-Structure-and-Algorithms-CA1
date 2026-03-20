@@ -32,8 +32,7 @@ public class ClimateActionList implements ClimateActionInterface, Serializable {
         if (iSize == 0) {
             head = newNode;
             last = newNode;
-        }
-        //add newNode to the first position
+        } //add newNode to the first position
         else if (iPosition == 1) {
             newNode.setNext(head);
             head.setPrev(newNode);
@@ -64,39 +63,65 @@ public class ClimateActionList implements ClimateActionInterface, Serializable {
         return currCANode;
     }
 
+    //move to next CANode
+    @Override
+    public Object next() {
+        //prevents moving if list is empty and moving past the list
+        if (currCANode == null) {
+            return null;
+        }
+        if (currCANode.getNext() != null) {
+            currCANode = currCANode.getNext();
+        }
+        return currCANode.getData();
+    }
+
+    //move to previous CANode
+    @Override
+    public Object prev() {
+        //prevents moving if list is empty and moving past the list
+        if (currCANode == null) {
+            return null;
+        }
+        if (currCANode.getPrev() != null) {
+            currCANode = currCANode.getPrev();
+        }
+        return currCANode.getData();
+
+    }
+
     //remove a CANode at a particular position
     @Override
     public void remove(int iPosition) {
         //ensures the list isn't empty
         if (iSize > 0) {
-            if(iSize==1){
-                head=null;
-                last=null;
-            }
-            //remove head, head becomes the next CANode,
-            else if(iPosition==1){
-                head=head.getNext();
+            if (iSize == 1) {
+                head = null;
+                last = null;
+            } //remove head, head becomes the next CANode,
+            else if (iPosition == 1) {
+                head = head.getNext();
                 head.setPrev(null);
-            //remove the last CANode, last becomes previous CANode
-            }else if(iPosition==iSize){
-                last=last.getPrev();
+                //remove the last CANode, last becomes previous CANode
+            } else if (iPosition == iSize) {
+                last = last.getPrev();
                 last.setNext(null);
-            //remove an element in the middle of the list
-            }else{
+                //remove an element in the middle of the list
+            } else {
                 //set the current CANode position
                 setCurrent(iPosition);
                 //find prevCANode
-                CANode prevCANode=currCANode.getPrev();
-                
+                CANode prevCANode = currCANode.getPrev();
+
                 //find nextCANode
-                CANode nextCANode=currCANode.getNext();
-                
+                CANode nextCANode = currCANode.getNext();
+
                 prevCANode.setNext(nextCANode);
                 nextCANode.setPrev(prevCANode);
             }
             //decrement list size once a CANode is removed
             iSize -= 1;
-        }else{
+        } else {
             System.out.print("There are no CANode's with climate action data to delete");
         }
 
@@ -130,12 +155,25 @@ public class ClimateActionList implements ClimateActionInterface, Serializable {
         String items = "";
 
         //iterate over Doubly Linked List ClimateActionList and print all Climate action data stored in each CANode
-        for (CANode tempNode = head; tempNode != null; tempNode = tempNode.getNext()) {
-            String tempItem = (tempNode.getData().toString());
+        for (CANode tempCANode = head; tempCANode != null; tempCANode = tempCANode.getNext()) {
+            String tempItem = (tempCANode.getData().toString());
             items = items + tempItem + "\n";
         }
         return items;
 
     }
 
+    //print theDoubly Linked List ClimateActionList backwards
+//    @Override
+//    public String printListBwd(){
+//        String items="";
+//        //start from last CANode to first CANode
+//        for(CANode tempCANode=last; tempCANode!=null; tempCANode=tempCANode.getPrev()){
+//            String tempItem=tempCANode.getData().toString();
+//            items=items+tempItem+"\n";
+//            
+//        }
+//        return items;
+//        
+//    }
 }

@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.biodiversitymanagerapp;
-
+import com.mycompany.biodiversitymanagerapp.EnvironmentDataGUI;
+import com.mycompany.biodiversitymanagerapp.PriorityEnvironmentGUI;
+import com.mycompany.biodiversitymanagerapp.ClimateActionGUI;
 import java.awt.Color;
 
 /**
@@ -79,7 +81,7 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(environmentDataBtn)
@@ -93,7 +95,7 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
                         .addGap(233, 233, 233))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(exitBtn)
-                        .addGap(351, 351, 351))))
+                        .addGap(349, 349, 349))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,32 +107,32 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
                     .addComponent(priorityEnvironmentBtn)
                     .addComponent(climateActionBtn)
                     .addComponent(environmentDataBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                 .addComponent(exitBtn)
                 .addGap(131, 131, 131))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //go to Environment Data section
     private void environmentDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_environmentDataBtnActionPerformed
         // TODO add your handling code here:
-        new EnvironmentDataGUI.setVisible(true);
+        new EnvironmentDataGUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_environmentDataBtnActionPerformed
-
+    //go to Priority Environment section 
     private void priorityEnvironmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityEnvironmentBtnActionPerformed
         // TODO add your handling code here:
-        new PriorityEnvironmentGUI.setVisible(true);
+        new PriorityEnvironmentGUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
-
+    //go to Climate Action Section
     private void climateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climateActionBtnActionPerformed
         // TODO add your handling code here:
-        new ClimateActionGUI.setVisible(true);
+        new ClimateActionGUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_climateActionBtnActionPerformed
-
+    //exit from the application
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
         // TODO add your handling code here:
         System.exit(0);

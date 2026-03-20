@@ -114,13 +114,15 @@ public class EnvironmentDataList implements EDInterface, Serializable {
     }
     //method prints out the Environment data stored in the Singly Linked List ENode
     @Override
-    public void printList() {
+    public String printList() {
         ENode tempENode=head;
+        String items="";
         //while loop continues from first position until it iterates through the whole list
         while(tempENode!=null){
-            System.out.print(tempENode.toString()+"\n");
+            items+=(tempENode.toString()+"\n");
             tempENode=tempENode.getNext();
         }
+        return items;
     }
 
 }

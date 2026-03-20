@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.biodiversitymanagerapp;
+import com.mycompany.biodiversitymanagerapp.EnvironmentDataGUI;
+import com.mycompany.biodiversitymanagerapp.PriorityEnvironmentGUI;
+import com.mycompany.biodiversitymanagerapp.BiodiversityManagerGUI;
+import java.awt.Color;
 
 /**
  *
@@ -17,6 +21,7 @@ public class ClimateActionGUI extends javax.swing.JFrame {
      */
     public ClimateActionGUI() {
         initComponents();
+        this.getContentPane().setBackground(Color.green);
     }
 
     /**
@@ -28,21 +33,236 @@ public class ClimateActionGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        title = new javax.swing.JLabel();
+        exitBtn = new javax.swing.JButton();
+        environmentDataBtn = new javax.swing.JButton();
+        priorityEnvironmentBtn = new javax.swing.JButton();
+        scopeLbl = new javax.swing.JLabel();
+        nameLbl = new javax.swing.JLabel();
+        descriptionLbl = new javax.swing.JLabel();
+        scopeTF = new javax.swing.JTextField();
+        nameTF = new javax.swing.JTextField();
+        descriptionTF = new javax.swing.JTextField();
+        resultLbl = new javax.swing.JLabel();
+        resultTF = new javax.swing.JTextField();
+        getClimateActionData = new javax.swing.JButton();
+        printListBtn = new javax.swing.JButton();
+        sizeBtn = new javax.swing.JButton();
+        insertClimateActionData = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        mainPageBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        title.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        title.setText("Climate Action");
+
+        exitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        exitBtn.setText("Exit");
+        exitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtnActionPerformed(evt);
+            }
+        });
+
+        environmentDataBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        environmentDataBtn.setText("Environment Data");
+        environmentDataBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                environmentDataBtnActionPerformed(evt);
+            }
+        });
+
+        priorityEnvironmentBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        priorityEnvironmentBtn.setText("Priority Environment");
+        priorityEnvironmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priorityEnvironmentBtnActionPerformed(evt);
+            }
+        });
+
+        scopeLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        scopeLbl.setText("Scope");
+
+        nameLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        nameLbl.setText("Name of chosen focus");
+
+        descriptionLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        descriptionLbl.setText(" Description of solutions applied");
+
+        scopeTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        nameTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        descriptionTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        resultLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        resultLbl.setText("Result");
+
+        getClimateActionData.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        getClimateActionData.setText("Get Climate Action Data");
+
+        printListBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        printListBtn.setText("Display All Cimate Action Data");
+
+        sizeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sizeBtn.setText("Number of stored Climate Action Data");
+
+        insertClimateActionData.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        insertClimateActionData.setText("Insert Climate Action Data");
+
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton1.setText("Next");
+
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton2.setText("Previous");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        mainPageBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        mainPageBtn.setText("Main Page");
+        mainPageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainPageBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(mainPageBtn)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(environmentDataBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(priorityEnvironmentBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(exitBtn)
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(title)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descriptionLbl)
+                            .addComponent(nameLbl)
+                            .addComponent(scopeLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(resultTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(descriptionTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
+                                .addGap(18, 18, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(scopeTF)
+                                .addGap(110, 110, 110)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(getClimateActionData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(64, 64, 64))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(printListBtn)
+                                    .addComponent(sizeBtn)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(14, 14, 14)
+                                            .addComponent(jButton2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButton1))
+                                        .addComponent(insertClimateActionData)))
+                                .addGap(22, 22, 22))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(resultLbl)
+                        .addGap(66, 66, 66)
+                        .addComponent(jScrollPane1)
+                        .addGap(208, 208, 208))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(title)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scopeLbl)
+                    .addComponent(scopeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(getClimateActionData))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameLbl)
+                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(printListBtn)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descriptionLbl)
+                    .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(sizeBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(insertClimateActionData)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resultTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resultLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exitBtn)
+                    .addComponent(environmentDataBtn)
+                    .addComponent(priorityEnvironmentBtn)
+                    .addComponent(mainPageBtn))
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    //go to Environment Data section
+    private void environmentDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_environmentDataBtnActionPerformed
+        // TODO add your handling code here:
+        new EnvironmentDataGUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_environmentDataBtnActionPerformed
+    //go to Priority Environment section
+    private void priorityEnvironmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityEnvironmentBtnActionPerformed
+        // TODO add your handling code here:
+        new PriorityEnvironmentGUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
+    //exit from the application
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitBtnActionPerformed
+    //go back to BiodiversityManager app main page
+    private void mainPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainPageBtnActionPerformed
+        // TODO add your handling code here:
+        new BiodiversityManagerGUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mainPageBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +290,26 @@ public class ClimateActionGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel descriptionLbl;
+    private javax.swing.JTextField descriptionTF;
+    private javax.swing.JButton environmentDataBtn;
+    private javax.swing.JButton exitBtn;
+    private javax.swing.JButton getClimateActionData;
+    private javax.swing.JButton insertClimateActionData;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton mainPageBtn;
+    private javax.swing.JLabel nameLbl;
+    private javax.swing.JTextField nameTF;
+    private javax.swing.JButton printListBtn;
+    private javax.swing.JButton priorityEnvironmentBtn;
+    private javax.swing.JLabel resultLbl;
+    private javax.swing.JTextField resultTF;
+    private javax.swing.JLabel scopeLbl;
+    private javax.swing.JTextField scopeTF;
+    private javax.swing.JButton sizeBtn;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,11 +11,11 @@ package com.mycompany.biodiversitymanagerapp;
 public class BiodiversityManager {
     
     //variable
-    private String scope, name, description;
+    protected String scope, name, description;
 
     //overloaded constructor
-    public BiodiversityManager(String scope, String name, String description) {
-        this.scope = scope;
+    protected BiodiversityManager(String scope, String name, String description) {
+        this.scope = scope; 
         this.name = name;
         this.description = description;
     }
@@ -46,12 +46,25 @@ public class BiodiversityManager {
     public String getDescription() {
         return description;
     }
-    //error handling for scope
-    public void validScope(String scope){
+    //error handling for common variables
+    protected void validCommon(){
         if(scope==null || (!scope.equalsIgnoreCase("Country") && !scope.equalsIgnoreCase("City") && !scope.equalsIgnoreCase("Habitat")) ){
             throw new IllegalArgumentException(" Scope can only be 'Country', 'City', 'Habitat' ");
         }
+        
+        if(name==null || name==""){
+            throw new IllegalArgumentException(" A name must be entered.");
+        }
+         if(description==null || description==""){
+            throw new IllegalArgumentException(" A description must be entered.");
+        }
+        
     }
+    //abstract validate methods, to be implemented in subclasses
+    protected void validate(){
+        validCommon();
+    }
+    
     //method can be overwritten in subclasses
     public String printDetails(){
         return "Scope: "+scope+"\nName "+name+"\ndescription "+description;

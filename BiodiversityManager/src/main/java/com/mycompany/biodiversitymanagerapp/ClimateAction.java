@@ -32,6 +32,18 @@ public class ClimateAction extends BiodiversityManager implements Serializable {
         return result;
     }
     
+    /**
+     *
+     */
+    @Override
+    public void validCommon(){
+        //inherit the validation from super class BiodiversityManager
+        super.validCommon();
+        if(result.equals(null) || result.equals("")){
+            throw new IllegalArgumentException("A result must be entered.");
+        }
+    }
+    
     //override the method with the ClimateAction variable
     @Override
     public String printDetails() {

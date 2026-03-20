@@ -27,6 +27,8 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+                      <Component id="mainPageBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="environmentDataBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="climateActionBtn" min="-2" max="-2" attributes="0"/>
@@ -42,10 +44,6 @@
                       <Component id="title" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="423" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -53,7 +51,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="insertPriorityEnvironment" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="printListBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="sizeBtn" min="-2" max="-2" attributes="0"/>
@@ -87,7 +85,12 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="369" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="429" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="423" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -109,7 +112,7 @@
                       <Component id="scopeTF" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -129,31 +132,27 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="priorityLbl" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="195" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="printListBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="sizeBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="insertPriorityEnvironment" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="removeBtn" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="exitBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="climateActionBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="environmentDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="priorityTF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="priorityLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="priorityTF" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="195" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="printListBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="sizeBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="insertPriorityEnvironment" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="removeBtn" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="exitBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="climateActionBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="environmentDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mainPageBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -175,6 +174,9 @@
         <Property name="text" type="java.lang.String" value="Exit"/>
         <Property name="actionCommand" type="java.lang.String" value="exitBtn"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="scopeLbl">
       <Properties>
@@ -216,6 +218,9 @@
         <Property name="text" type="java.lang.String" value="Climate Action"/>
         <Property name="actionCommand" type="java.lang.String" value="climateActionBtn"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="climateActionBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="environmentDataBtn">
       <Properties>
@@ -307,6 +312,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="priorityTF">
+    </Component>
+    <Component class="javax.swing.JButton" name="mainPageBtn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Main Page"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainPageBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
