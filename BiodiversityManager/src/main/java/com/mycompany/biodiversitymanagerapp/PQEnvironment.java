@@ -36,11 +36,21 @@ public class PQEnvironment implements PEInterface, Serializable {
             thePEQueue.add(index, newData);
         }
     }
+    
+    //get the PEQData with the highest priority
+    @Override
+    public Object frontData(){
+        if(!thePEQueue.isEmpty()){
+            return thePEQueue.get(0).getData();
+        }else{
+            return null;
+        }
+    }
 
-    //get the last data with the highest priority
+    //remove the data with the highest priority
     @Override
     public Object dequeue() {
-        return thePEQueue.remove(0);
+        return thePEQueue.remove(0).getData();
     }
 
     //method to get size of
@@ -53,6 +63,20 @@ public class PQEnvironment implements PEInterface, Serializable {
     @Override
     public boolean isEmpty() {
         return thePEQueue.isEmpty();
+    }
+    
+    //get based on priority for searchBtn
+    @Override
+    public Object findByPriority(int inewPriorityKey){
+        for(int index=0; index<thePEQueue.size(); index++){
+            PQEData curData=thePEQueue.get(index);
+            if(curData.getiKey()==inewPriorityKey){
+                return curData;
+            }
+        }
+        return null;// if nothing found
+        
+        
     }
 
     //find the position to insert data based on the priority key

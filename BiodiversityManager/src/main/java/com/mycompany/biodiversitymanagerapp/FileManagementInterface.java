@@ -10,6 +10,7 @@ package com.mycompany.biodiversitymanagerapp;
  */
 public interface FileManagementInterface {
     public void save(Object obj, String fileName);
+    //generic type, used
     public <T> T load(String fileName , T adt);
     
 }

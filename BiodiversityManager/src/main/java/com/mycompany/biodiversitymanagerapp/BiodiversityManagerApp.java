@@ -14,6 +14,6 @@ public class BiodiversityManagerApp {
         //initialise the main page GUI and set it to visible when app is started
         BiodiversityManagerGUI GUI=new BiodiversityManagerGUI();
         GUI.setVisible(true);
-
+        System.out.print("Running");
     }
 }

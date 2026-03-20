@@ -30,7 +30,7 @@ public class FileManagement implements FileManagementInterface {
     }
 
     //load meathod load the files with ADT data, using Java generic type to allow all ADT's to be saved,
-    //<T> preserve the type a when called
+    //<T> preserve the type when called
     //adt variable is returned if load fails so it can continue safely
     @SuppressWarnings("unchecked")//stop Java from warning me
     @Override

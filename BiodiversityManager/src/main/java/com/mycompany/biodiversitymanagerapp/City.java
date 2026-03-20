@@ -96,10 +96,11 @@ public class City extends BiodiversityManager implements Serializable {
             throw new IllegalArgumentException("Water Quality Index can only be between 0 and 100");
         }
     }
-    //override to onto the method City variables
+    
     @Override
-    public String printDetails() {
-        return super.printDetails()+"\nUrban heat temperature: "+urbanHeatTemperature+"\nAir quality index: "+airQualityIndex+"Tree coverage percentage: "+
+    public String toString() {
+        //override to onto the method City variables
+        return super.printDetails()+"\nUrban heat temperature: "+urbanHeatTemperature+"\nAir quality index: "+airQualityIndex+"\nTree coverage percentage: "+
                 treeCoveragePercentage+"\nWater quality index: "+waterQualityIndex;
     }
 }

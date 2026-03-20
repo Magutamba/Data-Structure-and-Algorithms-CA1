@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class EnvironmentDataGUI extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EnvironmentDataGUI.class.getName());
+    //variable to use EnvironmentData interface
     private EDInterface myEnvironmentData;
     //variable to use FileManagementInterface
     private FileManagementInterface fileManager;
@@ -22,8 +23,9 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
      * Creates new form EnvironmentDataGUI
      */
     public EnvironmentDataGUI() {
-        fileManager = new FileManagement();//initialize a new FileManagement
-        //new EnvironmentDataList, if file exists it loads otherwise it will default to a new list
+        //initialize new FileManagement
+        fileManager = new FileManagement();
+        //new EnvironmentDataList, if file exists load it otherwise it will default to a new list
         myEnvironmentData = fileManager.load("EnvironmentData.dat", new EnvironmentDataList());
         initComponents();
         this.getContentPane().setBackground(Color.green);
@@ -57,6 +59,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         title = new javax.swing.JLabel();
         exitBtn = new javax.swing.JButton();
         priorityEnvironmentBtn = new javax.swing.JButton();
@@ -125,6 +128,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(countryRB);
         countryRB.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         countryRB.setText("Country");
         countryRB.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +137,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(cityRB);
         cityRB.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         cityRB.setText("City");
         cityRB.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +146,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(habitatRB);
         habitatRB.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         habitatRB.setText("Habitat");
         habitatRB.addActionListener(new java.awt.event.ActionListener() {
@@ -312,20 +318,19 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
                                 .addComponent(biodiversityIndexTF, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(insertEnvironmentData)
-                                    .addComponent(printListBtn)
-                                    .addComponent(removeBtn)
-                                    .addComponent(sizeBtn)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(getEnvironmentData)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(clearBtn))
-                                    .addComponent(addDataBtn)
-                                    .addComponent(searchBtn))
-                                .addGap(49, 49, 49))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(clearBtn)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sizeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(removeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(printListBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(insertEnvironmentData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(addDataBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(getEnvironmentData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(49, 49, 49))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(mainPageBtn)
@@ -375,8 +380,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(treeCoveragePercentageLbl)
                     .addComponent(treeCoveragePercentageTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(getEnvironmentData)
-                    .addComponent(clearBtn))
+                    .addComponent(getEnvironmentData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(urbanHeatTemperatureLbl)
@@ -398,13 +402,18 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
                 .addComponent(sizeBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(priorityEnvironmentBtn)
-                    .addComponent(climateActionBtn)
-                    .addComponent(exitBtn)
-                    .addComponent(mainPageBtn))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(priorityEnvironmentBtn)
+                            .addComponent(climateActionBtn)
+                            .addComponent(exitBtn)
+                            .addComponent(mainPageBtn)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clearBtn)
+                        .addContainerGap(33, Short.MAX_VALUE))))
         );
 
         pack();
@@ -508,7 +517,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     //add Environmental data set by chosen scope such as Country to EnvironmentDataList
     private void addDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataBtnActionPerformed
         // TODO add your handling code here:
-        //variables that are used by all three scope
+        //get value for variables that are used by all three scope
         String scope = scopeTF.getText();
         String name = nameTF.getText();
         String description = descriptionTF.getText();
@@ -520,23 +529,29 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         if (countryRB.isSelected()) {
             double biodiversityIndex = Double.parseDouble(biodiversityIndexTF.getText());
             double soilQualityIndex = Double.parseDouble(soilQualityIndexTF.getText());
+
             //declare new object and set variables
             Country co = new Country(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
+
             //handle validation
             co.validCommon();
             co.validate();
             myEnvironmentData.add(co);
+
             //save to "EnvironmentData.dat"
             fileManager.save(myEnvironmentData, "EnvironmentData.dat");
         } //if city specific Environmental Data is wanted
         else if (cityRB.isSelected()) {
             double urbanHeatTemperature = Double.parseDouble(urbanHeatTemperatureTF.getText());
+
             //declare new object and set variables
             City ci = new City(urbanHeatTemperature, airQualityIndex, treeCoveragePercentage, waterQualityIndex, scope, name, description);
+
             //handle validation
             ci.validCommon();
             ci.validate();
             myEnvironmentData.add(ci);
+
             //save to "EnvironmentData.dat"
             fileManager.save(myEnvironmentData, "EnvironmentData.dat");
         } //if habitat specific Environmental Data is wanted
@@ -573,7 +588,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         if (countryRB.isSelected()) {
             double biodiversityIndex = Double.parseDouble(biodiversityIndexTF.getText());
             double soilQualityIndex = Double.parseDouble(soilQualityIndexTF.getText());
-            //declare new object and set variables
+            //initialize Country with its variables
             Country co = new Country(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
             //handle validation
             co.validCommon();
@@ -584,7 +599,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         } //if city specific Environmental Data is wanted
         else if (cityRB.isSelected()) {
             double urbanHeatTemperature = Double.parseDouble(urbanHeatTemperatureTF.getText());
-            //declare new object and set variables
+            //initialize City with its variables
             City ci = new City(urbanHeatTemperature, airQualityIndex, treeCoveragePercentage, waterQualityIndex, scope, name, description);
             //handle validation
             ci.validCommon();
@@ -597,12 +612,14 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             double biodiversityIndex = Double.parseDouble(biodiversityIndexTF.getText());
             double soilQualityIndex = Double.parseDouble(soilQualityIndexTF.getText());
 
-            //declare new object and set variables
+            //initialize Habitat with its variables
             Habitat h = new Habitat(biodiversityIndex, airQualityIndex, treeCoveragePercentage, soilQualityIndex, waterQualityIndex, scope, name, description);
+
             //handle validation
             h.validCommon();
             h.validate();
             myEnvironmentData.add(pos, h);
+
             //save to "EnvironmentData.dat"
             fileManager.save(myEnvironmentData, "EnvironmentData.dat");
 
@@ -612,6 +629,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_insertEnvironmentDataActionPerformed
+
     //print all Environmental Data in the list
     private void printListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printListBtnActionPerformed
         // TODO add your handling code here:
@@ -619,17 +637,18 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         if (myEnvironmentData.isEmpty()) {
             displayTA.append("The Environment List as no Environment Data stored.\n");
         } else {
-            
-            displayTA.append(myEnvironmentData.printList() + "\n");
+
+            displayTA.append(myEnvironmentData.printList() + " \n");
         }
 
     }//GEN-LAST:event_printListBtnActionPerformed
+
     //remove an Environmental Data at a specific position
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         // TODO add your handling code here:
-        int pos = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the positon of the Environment Data to delete. "));
+        int pos = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the positon of the Environment Data to delete: "));
         if (pos < 1) {
-            JOptionPane.showMessageDialog(this, "That is not a valid position must be a number greater than or equal to 1");
+            JOptionPane.showMessageDialog(this, "That is not a valid position must be a number greater than or equal to 1.");
         } else {
             //check if list is empty
             if (myEnvironmentData.isEmpty()) {
@@ -637,7 +656,6 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             } else {
                 myEnvironmentData.remove(pos);
                 fileManager.save(myEnvironmentData, "EnvironmentData.dat");
-                int iNumber = myEnvironmentData.size();
                 displayTA.append("The Environment Data stored at " + pos + " as been deleted.\n");
             }
         }
@@ -647,10 +665,10 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         //check if list is empty
         if (myEnvironmentData.isEmpty()) {
-            displayTA.append("The Environment List as no Environment Data store.\n");
+            displayTA.append("The Environment List as no Environment Data stored.\n");
         } else {
             int iNumber = myEnvironmentData.size();
-            displayTA.append("There are" + iNumber + " of Environment Data stored. \n");
+            displayTA.append("There are " + iNumber + " of Environment Data stored.\n");
         }
     }//GEN-LAST:event_sizeBtnActionPerformed
     //search for an Environment Data by name
@@ -662,7 +680,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
             return;
         }
         //remove space to ensure accuracy of search
-        searchName=searchName.trim();
+        searchName = searchName.trim();
         //if no name is entered
         if (searchName.isEmpty()) {
             JOptionPane.showMessageDialog(this, "A name must be entered to search.");
@@ -677,19 +695,24 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         boolean found = false;
         //iterate through EnvironmentList
         for (int iCount = 1; iCount <= myEnvironmentData.size(); iCount++) {
-            //get the environment data at icount
-            Object data = myEnvironmentData.get(iCount);
-
-            //check if data is an instance of BiodiversityManager or it's subclasses, if not skipp the rest of the code
-            if (!(data instanceof BiodiversityManager)) {
-                continue;
-            }
-            //cast data that is of type Object as BiodiversityManage and get access to its methods
-            BiodiversityManager tempData = (BiodiversityManager) data;
-
+//            //get the environment data at icount
+//            Object data = myEnvironmentData.get(iCount);
+//
+//            //check if data is an instance of BiodiversityManager or it's subclasses, if not skip the rest of the code
+            //better if you aren't sure that myEnvironmentData as non BiodiversityManager objects
+//            if (!(data instanceof BiodiversityManager)) {
+//                continue;
+//            }
+//            //cast data that is of type Object as BiodiversityManage and get access to its methods
+//            BiodiversityManager tempData = (BiodiversityManager) data;
+            BiodiversityManager bm = (BiodiversityManager) myEnvironmentData.get(iCount);
             //if searchName matches a name in the list
-            if (tempData.getName() != null && tempData.getName().equalsIgnoreCase(searchName)) {
-                displayTA.append("The Environment data " + myEnvironmentData.get(iCount) + " was found at " + iCount + " position.\n");
+//            if (tempData.getName() != null && tempData.getName().equalsIgnoreCase(searchName)) {
+//                displayTA.append("The Environment data " + myEnvironmentData.get(iCount) + " was found at " + iCount + " position.\n");
+//                found = true;
+//            }
+            if (bm.getName() != null && bm.getName().equalsIgnoreCase(searchName)) {
+                displayTA.append(" At " + iCount + " position. " + "\nThe Environment data was found\n " + myEnvironmentData.get(iCount) + " \n");
                 found = true;
             }
 
@@ -704,7 +727,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
         scopeTF.setText("");
-        nameTF.setVisible(true);
+        nameTF.setText("");
         descriptionTF.setText("");
         biodiversityIndexTF.setText("");
         airQualityIndexTF.setText("");
@@ -746,6 +769,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     private javax.swing.JTextField airQualityIndexTF;
     private javax.swing.JLabel biodiversityIndexLbl;
     private javax.swing.JTextField biodiversityIndexTF;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton cityRB;
     private javax.swing.JButton clearBtn;
     private javax.swing.JButton climateActionBtn;

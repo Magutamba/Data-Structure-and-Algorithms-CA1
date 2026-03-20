@@ -33,10 +33,11 @@ public class PriorityEnvironment extends BiodiversityManager implements Serializ
         return reason;
     }
     
+    //add reason validation to inherited validCommon method
     @Override
     public void validCommon(){
         super.validCommon();
-        if(reason.equals(null) || reason.equals("") ){
+        if(reason==null || reason.equals("") ){
             throw new IllegalArgumentException(" Scope can only be 'Country', 'City', 'Habitat' ");
         }
     }

@@ -65,9 +65,15 @@ public class BiodiversityManager {
         validCommon();
     }
     
-    //method can be overwritten in subclasses
+    //method for displaying details will be overwritten in subclasses
     public String printDetails(){
         return "Scope: "+scope+"\nName "+name+"\ndescription "+description;
+    }
+    
+    //use my own toString() implementation rather than Java default toString() for objects
+    @Override
+    public String toString(){
+        return printDetails();
     }
     
 }

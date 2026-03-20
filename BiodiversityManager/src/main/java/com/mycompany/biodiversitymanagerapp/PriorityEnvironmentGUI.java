@@ -5,24 +5,39 @@
 package com.mycompany.biodiversitymanagerapp;
 
 import java.awt.Color;
-import com.mycompany.biodiversitymanagerapp.EnvironmentDataGUI;
-import com.mycompany.biodiversitymanagerapp.ClimateActionGUI;
-import com.mycompany.biodiversitymanagerapp.BiodiversityManagerGUI;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author moise
  */
 public class PriorityEnvironmentGUI extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PriorityEnvironmentGUI.class.getName());
 
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PriorityEnvironmentGUI.class.getName());
+    //variable to use Priority Environment interface
+    private PEInterface myPriorityEnvironment;
+    //variable to use FileManagement
+    private FileManagementInterface fileManager;
+
+    //
     /**
      * Creates new form PriorityEnvironmentGUI
      */
     public PriorityEnvironmentGUI() {
+        //initialize a new FileManagement
+        fileManager = new FileManagement();
+        //new PQEnvironment, if the file exist load it otherwise default to a new Queue
+        myPriorityEnvironment = fileManager.load("PriorityEnvironment.dat", new PQEnvironment());
         initComponents();
         this.getContentPane().setBackground(Color.green);
+        scopeLbl.setVisible(true);
+        scopeTF.setVisible(true);
+        nameLbl.setVisible(true);
+        nameTF.setVisible(true);
+        descriptionLbl.setVisible(true);
+        descriptionTF.setVisible(true);
+        reasonLbl.setVisible(true);
+        reasonTF.setVisible(true);
     }
 
     /**
@@ -43,7 +58,7 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         climateActionBtn = new javax.swing.JButton();
         environmentDataBtn = new javax.swing.JButton();
         insertPriorityEnvironment = new javax.swing.JButton();
-        printListBtn = new javax.swing.JButton();
+        printQueueBtn = new javax.swing.JButton();
         removeBtn = new javax.swing.JButton();
         sizeBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -55,6 +70,9 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         priorityLbl = new javax.swing.JLabel();
         priorityTF = new javax.swing.JTextField();
         mainPageBtn = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
+        getHighestPriorityEnvironment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,15 +119,35 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
 
         insertPriorityEnvironment.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         insertPriorityEnvironment.setText("Insert Priority Environment");
+        insertPriorityEnvironment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertPriorityEnvironmentActionPerformed(evt);
+            }
+        });
 
-        printListBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        printListBtn.setText("Display Priority Environments");
+        printQueueBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        printQueueBtn.setText("Display Priority Environments");
+        printQueueBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printQueueBtnActionPerformed(evt);
+            }
+        });
 
         removeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         removeBtn.setText("Remove Environment with high Priority");
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBtnActionPerformed(evt);
+            }
+        });
 
         sizeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         sizeBtn.setText("Number of Priority Environments");
+        sizeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sizeBtnActionPerformed(evt);
+            }
+        });
 
         displayTA.setColumns(20);
         displayTA.setRows(5);
@@ -132,13 +170,66 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
             }
         });
 
+        searchBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        searchBtn.setText("Search for Priority Environment");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        clearBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
+
+        getHighestPriorityEnvironment.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        getHighestPriorityEnvironment.setText("Get Highest Priority Environment");
+        getHighestPriorityEnvironment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getHighestPriorityEnvironmentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(descriptionLbl)
+                        .addGap(30, 30, 30)
+                        .addComponent(descriptionTF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scopeLbl)
+                        .addGap(146, 146, 146)
+                        .addComponent(scopeTF))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(nameLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reasonLbl)
+                            .addComponent(priorityLbl))
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reasonTF)
+                            .addComponent(priorityTF))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(title)
+                        .addGap(283, 283, 283))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(mainPageBtn)
                         .addGap(18, 18, 18)
@@ -148,49 +239,14 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(exitBtn)
                         .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(removeBtn)
-                        .addGap(240, 240, 240))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(title)
-                        .addGap(283, 283, 283))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(insertPriorityEnvironment)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(printListBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(sizeBtn))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(descriptionLbl)
-                                .addGap(30, 30, 30)
-                                .addComponent(descriptionTF))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(scopeLbl)
-                                .addGap(146, 146, 146)
-                                .addComponent(scopeTF))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(nameLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(reasonLbl)
-                                    .addComponent(priorityLbl))
-                                .addGap(64, 64, 64)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(reasonTF)
-                                    .addComponent(priorityTF))))
-                        .addGap(429, 429, 429))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(clearBtn))
+                    .addComponent(getHighestPriorityEnvironment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sizeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(printQueueBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insertPriorityEnvironment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,39 +255,49 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
                 .addComponent(title)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(scopeLbl))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scopeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nameLbl)
-                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(scopeLbl))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(scopeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(descriptionLbl)
-                        .addGap(33, 33, 33))
-                    .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(reasonLbl)
-                    .addComponent(reasonTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(priorityLbl)
-                    .addComponent(priorityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(printListBtn)
-                    .addComponent(sizeBtn)
-                    .addComponent(insertPriorityEnvironment))
-                .addGap(18, 18, 18)
-                .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(nameLbl)
+                                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(descriptionLbl)
+                                .addGap(33, 33, 33))
+                            .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(reasonLbl)
+                            .addComponent(reasonTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priorityLbl)
+                            .addComponent(priorityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
+                .addComponent(insertPriorityEnvironment)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchBtn)
+                .addGap(9, 9, 9)
+                .addComponent(printQueueBtn)
+                .addGap(12, 12, 12)
+                .addComponent(sizeBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(getHighestPriorityEnvironment)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(clearBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitBtn)
                     .addComponent(climateActionBtn)
@@ -265,6 +331,106 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exitBtnActionPerformed
+    //insert new PriorityEnvironment data based on Priority given
+    private void insertPriorityEnvironmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertPriorityEnvironmentActionPerformed
+        // TODO add your handling code here:
+        //get the values entered by the  user
+        String scope = scopeTF.getText();
+        String name = nameTF.getText();
+        String description = descriptionTF.getText();
+        String reason = reasonTF.getText();
+        //get priority
+        int priority = Integer.parseInt(priorityTF.getText());
+
+        //initializa PriorityEnvironment with its own variables
+        PriorityEnvironment pe = new PriorityEnvironment(reason, scope, name, description);
+
+        //validate the values
+        pe.validCommon();
+
+        //add to queue PQEnvironment
+        myPriorityEnvironment.enqueue(priority, pe);
+        //save to file
+        fileManager.save(myPriorityEnvironment, "PriorityEnvironment.dat");
+    }//GEN-LAST:event_insertPriorityEnvironmentActionPerformed
+    //get the number of PriorityEnvironments in the queue
+    private void sizeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeBtnActionPerformed
+        // TODO add your handling code here:
+        //check if the queue is empty
+        if (myPriorityEnvironment.isEmpty()) {
+            displayTA.append("There are no Priority Environments stored in the Priority Queue Environment.\n");
+        } else {
+            displayTA.append("There are " + myPriorityEnvironment.size() + " Priority Environments stored in the Priority Queue Environment\n");
+        }
+
+    }//GEN-LAST:event_sizeBtnActionPerformed
+    //remove the Priority Environment with the highest priority
+    private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
+        // TODO add your handling code here:
+        //check if the queue is empty
+        if (myPriorityEnvironment.isEmpty()) {
+            displayTA.append("There are no Priority Environments to delete.\n");
+        } else {
+            myPriorityEnvironment.dequeue();
+            fileManager.save(myPriorityEnvironment, "PriorityEnvironment.dat");
+            displayTA.append("The highest Priority Environment as been deleted.\n");
+        }
+    }//GEN-LAST:event_removeBtnActionPerformed
+    //display all Priority Environment stored in PEQEnvironment queue
+    private void printQueueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printQueueBtnActionPerformed
+        // TODO add your handling code here:
+        //check if queue is empty 
+        if (myPriorityEnvironment.isEmpty()) {
+            displayTA.append("There are no Priority Environments to display.\n");
+        } else {
+            displayTA.append(myPriorityEnvironment.printPEQueue() + "\n");
+        }
+    }//GEN-LAST:event_printQueueBtnActionPerformed
+    //search by priority
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+        if (myPriorityEnvironment.isEmpty()) {
+            displayTA.append("There are no Priority Environments stored to search.\n");
+            //stop method if the queue is empty
+            return;
+        } else {
+            int priorityKey = Integer.parseInt(JOptionPane.showInputDialog("Enter the priority of the Priority Environment you want to search. "));
+            //ensure a valid position is enterd
+            if (priorityKey < 0) {
+                displayTA.append("That is not a valid position.\n");
+                //stop the method if is an invalid positon
+                return;
+            }
+
+            //variable to hold result of findByPriority method
+            Object found = myPriorityEnvironment.findByPriority(priorityKey);
+            if (found != null) {
+                displayTA.append("The Priority Environment with " + priorityKey + " was found. " + found + "\n");
+            } else {
+                displayTA.append("There is no Priority Environment with that priority.\n");
+            }
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+        scopeTF.setText("");
+        nameTF.setText("");
+        descriptionTF.setText("");
+        reasonTF.setText("");
+        priorityTF.setText("");
+        displayTA.setText("");
+    }//GEN-LAST:event_clearBtnActionPerformed
+    //get the Priority Environment with the highest priority
+    private void getHighestPriorityEnvironmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getHighestPriorityEnvironmentActionPerformed
+        // TODO add your handling code here:
+        //check if queue is empty
+        if (myPriorityEnvironment.isEmpty()) {
+            displayTA.append("There are no Priority Environments stored to search.\n");
+        } else {
+            displayTA.append("The highest priority environment \n"+myPriorityEnvironment.frontData() + "\n");
+        }
+    }//GEN-LAST:event_getHighestPriorityEnvironmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,18 +458,20 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearBtn;
     private javax.swing.JButton climateActionBtn;
     private javax.swing.JLabel descriptionLbl;
     private javax.swing.JTextField descriptionTF;
     private javax.swing.JTextArea displayTA;
     private javax.swing.JButton environmentDataBtn;
     private javax.swing.JButton exitBtn;
+    private javax.swing.JButton getHighestPriorityEnvironment;
     private javax.swing.JButton insertPriorityEnvironment;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton mainPageBtn;
     private javax.swing.JLabel nameLbl;
     private javax.swing.JTextField nameTF;
-    private javax.swing.JButton printListBtn;
+    private javax.swing.JButton printQueueBtn;
     private javax.swing.JLabel priorityLbl;
     private javax.swing.JTextField priorityTF;
     private javax.swing.JLabel reasonLbl;
@@ -311,6 +479,7 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
     private javax.swing.JButton removeBtn;
     private javax.swing.JLabel scopeLbl;
     private javax.swing.JTextField scopeTF;
+    private javax.swing.JButton searchBtn;
     private javax.swing.JButton sizeBtn;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

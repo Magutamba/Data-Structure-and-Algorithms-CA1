@@ -3,25 +3,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.biodiversitymanagerapp;
-import com.mycompany.biodiversitymanagerapp.EnvironmentDataGUI;
-import com.mycompany.biodiversitymanagerapp.PriorityEnvironmentGUI;
-import com.mycompany.biodiversitymanagerapp.BiodiversityManagerGUI;
+
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author moise
  */
 public class ClimateActionGUI extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClimateActionGUI.class.getName());
+    //variable to use ClimateActionInterface
+    private ClimateActionInterface myClimateAction;
+    //variable to use FileManagementInterface
+    private FileManagement fileManager;
 
     /**
      * Creates new form ClimateActionGUI
      */
     public ClimateActionGUI() {
+        //initialize new FileManagement
+        fileManager = new FileManagement();
+        //new ClimateActionList, if the file exist load it otherwise default to a new Doubly Linked List ClimateActionList
+        myClimateAction = fileManager.load("ClimateAction.dat", new ClimateActionList());
         initComponents();
         this.getContentPane().setBackground(Color.green);
+        scopeLbl.setVisible(true);
+        scopeTF.setVisible(true);
+        nameLbl.setVisible(true);
+        nameTF.setVisible(true);
+        descriptionLbl.setVisible(true);
+        descriptionTF.setVisible(true);
+        resultLbl.setVisible(true);
+        resultTF.setVisible(true);
     }
 
     /**
@@ -49,11 +64,13 @@ public class ClimateActionGUI extends javax.swing.JFrame {
         printListBtn = new javax.swing.JButton();
         sizeBtn = new javax.swing.JButton();
         insertClimateActionData = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        nextBtn = new javax.swing.JButton();
+        previousBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        displayTA = new javax.swing.JTextArea();
         mainPageBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
+        removeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,25 +121,55 @@ public class ClimateActionGUI extends javax.swing.JFrame {
 
         getClimateActionData.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         getClimateActionData.setText("Get Climate Action Data");
+        getClimateActionData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getClimateActionDataActionPerformed(evt);
+            }
+        });
 
         printListBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         printListBtn.setText("Display All Cimate Action Data");
+        printListBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printListBtnActionPerformed(evt);
+            }
+        });
 
         sizeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         sizeBtn.setText("Number of stored Climate Action Data");
+        sizeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sizeBtnActionPerformed(evt);
+            }
+        });
 
         insertClimateActionData.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         insertClimateActionData.setText("Insert Climate Action Data");
+        insertClimateActionData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertClimateActionDataActionPerformed(evt);
+            }
+        });
 
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jButton1.setText("Next");
+        nextBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        nextBtn.setText("Next");
+        nextBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextBtnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jButton2.setText("Previous");
+        previousBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        previousBtn.setText("Previous");
+        previousBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousBtnActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        displayTA.setColumns(20);
+        displayTA.setRows(5);
+        jScrollPane1.setViewportView(displayTA);
 
         mainPageBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         mainPageBtn.setText("Main Page");
@@ -132,14 +179,30 @@ public class ClimateActionGUI extends javax.swing.JFrame {
             }
         });
 
+        clearBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
+
+        removeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        removeBtn.setText("Delete Climate Action");
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(221, 221, 221)
+                .addGap(210, 210, 210)
                 .addComponent(mainPageBtn)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(environmentDataBtn)
@@ -170,27 +233,27 @@ public class ClimateActionGUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(scopeTF)
                                 .addGap(110, 110, 110)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(getClimateActionData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(64, 64, 64))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(printListBtn)
-                                    .addComponent(sizeBtn)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(14, 14, 14)
-                                            .addComponent(jButton2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton1))
-                                        .addComponent(insertClimateActionData)))
-                                .addGap(22, 22, 22))))
+                                .addComponent(previousBtn)
+                                .addGap(47, 47, 47)
+                                .addComponent(nextBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(clearBtn))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(insertClimateActionData, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(printListBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sizeBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(removeBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(getClimateActionData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)))
+                        .addGap(19, 19, 19))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(resultLbl)
                         .addGap(66, 66, 66)
                         .addComponent(jScrollPane1)
-                        .addGap(208, 208, 208))))
+                        .addGap(212, 212, 212))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,13 +285,15 @@ public class ClimateActionGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(resultTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resultLbl))
+                    .addComponent(resultLbl)
+                    .addComponent(removeBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(nextBtn)
+                    .addComponent(previousBtn)
+                    .addComponent(clearBtn))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitBtn)
@@ -263,6 +328,143 @@ public class ClimateActionGUI extends javax.swing.JFrame {
         new BiodiversityManagerGUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mainPageBtnActionPerformed
+    //get climate action Data at a specific position
+    private void getClimateActionDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getClimateActionDataActionPerformed
+        // TODO add your handling code here:
+        //get the position to add Climate Action data
+        int pos = Integer.parseInt(JOptionPane.showInputDialog("Enter the position of the Climated Data you want.\n"));
+        //ensure valid position
+        if (pos < 1) {
+            displayTA.append("That is an invalid position.\n");
+            //stop method if invalid
+            return;
+        }
+        //check if the DLL is empty
+        if (myClimateAction.isEmpty()) {
+            displayTA.append("There is no Climate Action data stored.\n");
+        } else {
+            displayTA.append(myClimateAction.get(pos) + "\n");
+        }
+    }//GEN-LAST:event_getClimateActionDataActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+        scopeTF.setText("");
+        nameTF.setText("");
+        descriptionTF.setText("");
+        resultTF.setText("");
+        displayTA.setText("");
+    }//GEN-LAST:event_clearBtnActionPerformed
+    //insert ClimateAction data at a specific position in DLL
+    private void insertClimateActionDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertClimateActionDataActionPerformed
+        // TODO add your handling code here:
+        //get the variable entered by user
+        String scope = scopeTF.getText();
+        String name = nameTF.getText();
+        String description = descriptionTF.getText();
+        String result = resultTF.getText();
+        int pos = Integer.parseInt(JOptionPane.showInputDialog("Enter the position of the Climated Data you want.\n"));
+        //ensure valid position
+        if (pos < 1) {
+            displayTA.append("That is an invalid position.\n");
+            //stop method if invalid
+            return;
+        }
+        //initialize ClimateAction with variables
+        ClimateAction ca = new ClimateAction(result, scope, name, description);
+
+        //handle validation
+        ca.validCommon();
+
+        //save the ClimateAction data to DLL
+        myClimateAction.add(pos, ca);
+
+        //save ClimateAction with the data to file ClimateAction.dat
+        fileManager.save(myClimateAction, "ClimateAction.dat");
+    }//GEN-LAST:event_insertClimateActionDataActionPerformed
+    //print DLL ClimateActionList
+    private void printListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printListBtnActionPerformed
+        // TODO add your handling code here:
+        //check if the DLL is empty
+        if (myClimateAction.isEmpty()) {
+            displayTA.append("There is no Climate Action data stored.\n");
+        } else {
+            displayTA.append(myClimateAction.printList() + "\n");
+        }
+    }//GEN-LAST:event_printListBtnActionPerformed
+    //get the number of ClimateAction data stored in DLL
+    private void sizeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeBtnActionPerformed
+        // TODO add your handling code here:
+        if (myClimateAction.isEmpty()) {
+            displayTA.append("There is no Climate Action data stored.\n");
+        } else {
+            //assign the size to iNumber
+            int iNumber = myClimateAction.size();
+            displayTA.append("There is " + iNumber + " of ClimateAction data stored.\n");
+        }
+    }//GEN-LAST:event_sizeBtnActionPerformed
+    //remove Climate Action data by position
+    private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
+        // TODO add your handling code here:
+        int pos = Integer.parseInt(JOptionPane.showInputDialog("Enter the position of the Climate Action Data you want.\n"));
+        //ensure valid position
+        if (pos < 1) {
+            displayTA.append("That is an invalid position.\n");
+            //stop method if invalid
+            return;
+            //check if DLL is empty
+        }
+        if (myClimateAction.isEmpty()) {
+            displayTA.append("There is no Climate Action data to remove.\n");
+        } else {
+            myClimateAction.remove(pos);
+            fileManager.save(myClimateAction, "ClimateAction.dat");
+            displayTA.append("The Climate Action data at " + pos + " has been deleted.\n");
+        }
+    }//GEN-LAST:event_removeBtnActionPerformed
+    //button to allow moving to the next  ClimateAction in the DLL 
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
+        // TODO add your handling code here:
+
+        //clear display area before displaying ClimateAction data
+        displayTA.setText("");
+
+        //check if DLL is empty
+        if (myClimateAction.isEmpty()) {
+            displayTA.append("There is no Climate Action data view .\n");
+        } else {
+            Object next = myClimateAction.next();
+            //handle null return
+            if (next == null) {
+                displayTA.append("There is no ClimateAction data after this to view to view.\n");
+            } else {
+                //display the next Climate Action Data
+                displayTA.append(next + "\n");
+            }
+        }
+
+    }//GEN-LAST:event_nextBtnActionPerformed
+    //button to allow moving to the previous  ClimateAction in the DLL
+    private void previousBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousBtnActionPerformed
+        // TODO add your handling code here:
+
+        //clear display area before displaying ClimateAction data
+        displayTA.setText("");
+
+        //check if DLL is empty
+        if (myClimateAction.isEmpty()) {
+            displayTA.append("There is no Climate Action data to view.\n");
+        } else {
+            Object prev = myClimateAction.prev();
+            //handle null return
+            if (prev == null) {
+                displayTA.append("There is no previous ClimateAction data to view.\n");
+            } else {
+                //display the next Climate Action Data
+                displayTA.append(prev + "\n");
+            }
+        }
+    }//GEN-LAST:event_previousBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,21 +492,23 @@ public class ClimateActionGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearBtn;
     private javax.swing.JLabel descriptionLbl;
     private javax.swing.JTextField descriptionTF;
+    private javax.swing.JTextArea displayTA;
     private javax.swing.JButton environmentDataBtn;
     private javax.swing.JButton exitBtn;
     private javax.swing.JButton getClimateActionData;
     private javax.swing.JButton insertClimateActionData;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton mainPageBtn;
     private javax.swing.JLabel nameLbl;
     private javax.swing.JTextField nameTF;
+    private javax.swing.JButton nextBtn;
+    private javax.swing.JButton previousBtn;
     private javax.swing.JButton printListBtn;
     private javax.swing.JButton priorityEnvironmentBtn;
+    private javax.swing.JButton removeBtn;
     private javax.swing.JLabel resultLbl;
     private javax.swing.JTextField resultTF;
     private javax.swing.JLabel scopeLbl;

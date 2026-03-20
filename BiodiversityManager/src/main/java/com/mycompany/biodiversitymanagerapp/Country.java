@@ -94,7 +94,7 @@ public class Country extends BiodiversityManager implements Serializable {
     //override to onto the method Country variables
     @Override
     public String printDetails() {
-        return super.printDetails() + "\nBiodiversity index: " + biodiversityIndex + "\nAir quality index: " + airQualityIndex + "Tree coverage percentage: "
+        return super.printDetails() + "\nBiodiversity index: " + biodiversityIndex + "\nAir quality index: " + airQualityIndex + "\nTree coverage percentage: "
                 + treeCoveragePercentage + "\nSoil quality index: " + soilQualityIndex + "\nWater quality index: " + waterQualityIndex;
     }
 }
