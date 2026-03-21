@@ -60,19 +60,19 @@ public class City extends BiodiversityManager implements Serializable {
         return waterQualityIndex;
     }
     
-    //error handling for treeCoveragePercentage
-    public void validTreeCoveragePercentage(){
-        if(treeCoveragePercentage<0 || treeCoveragePercentage>100){
-            throw new IllegalArgumentException("Tree Coverage Percentage can only be between 0 and 100");
-        }
-    }
-    
-    //error handling for WaterQualityIndex
-    public void validWaterQualityIndex(double waterQualityIndex){
-        if(waterQualityIndex<0 || waterQualityIndex>100){
-            throw new IllegalArgumentException("Water Quality Index can only be between 0 and 100");
-        }
-    }
+//    //error handling for treeCoveragePercentage
+//    public void validTreeCoveragePercentage(){
+//        if(treeCoveragePercentage<0 || treeCoveragePercentage>100){
+//            throw new IllegalArgumentException("Tree Coverage Percentage can only be between 0 and 100");
+//        }
+//    }
+//    
+//    //error handling for WaterQualityIndex
+//    public void validWaterQualityIndex(double waterQualityIndex){
+//        if(waterQualityIndex<0 || waterQualityIndex>100){
+//            throw new IllegalArgumentException("Water Quality Index can only be between 0 and 100");
+//        }
+//    }
     //override with City specific validation
     @Override
     protected void validate(){

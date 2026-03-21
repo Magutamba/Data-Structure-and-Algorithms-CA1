@@ -421,19 +421,24 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     private void mainPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainPageBtnActionPerformed
         // TODO add your handling code here:
         new BiodiversityManagerGUI().setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_mainPageBtnActionPerformed
     //go to Priority Environment section 
     private void priorityEnvironmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityEnvironmentBtnActionPerformed
         // TODO add your handling code here:
+        fileManager.save(myEnvironmentData,"EnvironmentData.dat");
         new PriorityEnvironmentGUI().setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
     //go to Climate Action Section
     private void climateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climateActionBtnActionPerformed
         // TODO add your handling code here:
+        fileManager.save(myEnvironmentData,"EnvironmentData.dat");
         new ClimateActionGUI().setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_climateActionBtnActionPerformed
     //exit from the application
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed

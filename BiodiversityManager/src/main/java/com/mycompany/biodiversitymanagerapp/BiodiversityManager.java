@@ -4,11 +4,13 @@
  */
 package com.mycompany.biodiversitymanagerapp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author moise
  */
-public class BiodiversityManager {
+public class BiodiversityManager implements Serializable {
     
     //variable
     protected String scope, name, description;
@@ -52,10 +54,10 @@ public class BiodiversityManager {
             throw new IllegalArgumentException(" Scope can only be 'Country', 'City', 'Habitat' ");
         }
         
-        if(name==null || name==""){
+        if(name==null || name.equals("")){
             throw new IllegalArgumentException(" A name must be entered.");
         }
-         if(description==null || description==""){
+         if(description==null || description.equals("")){
             throw new IllegalArgumentException(" A description must be entered.");
         }
         
