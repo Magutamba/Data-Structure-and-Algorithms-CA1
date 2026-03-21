@@ -118,19 +118,25 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
     private void environmentDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_environmentDataBtnActionPerformed
         // TODO add your handling code here:
         new EnvironmentDataGUI().setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
+        this.dispose();
     }//GEN-LAST:event_environmentDataBtnActionPerformed
     //go to Priority Environment section 
     private void priorityEnvironmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityEnvironmentBtnActionPerformed
         // TODO add your handling code here:
         new PriorityEnvironmentGUI().setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
+        this.dispose();
     }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
     //go to Climate Action Section
     private void climateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climateActionBtnActionPerformed
         // TODO add your handling code here:
         new ClimateActionGUI().setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
+        this.dispose();
     }//GEN-LAST:event_climateActionBtnActionPerformed
     //exit from the application
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed

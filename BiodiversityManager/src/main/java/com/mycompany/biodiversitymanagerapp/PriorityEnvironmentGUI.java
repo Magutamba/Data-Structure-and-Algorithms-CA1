@@ -316,6 +316,7 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         fileManager.save(myPriorityEnvironment, "PriorityEnvironment.dat");
         new EnvironmentDataGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_environmentDataBtnActionPerformed
     //go back to BiodiversityManager app main page 
@@ -323,6 +324,7 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new BiodiversityManagerGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_mainPageBtnActionPerformed
     //go to Climate Action Section
@@ -331,6 +333,7 @@ public class PriorityEnvironmentGUI extends javax.swing.JFrame {
         fileManager.save(myPriorityEnvironment, "PriorityEnvironment.dat");
         new ClimateActionGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_climateActionBtnActionPerformed
     //exit from the application

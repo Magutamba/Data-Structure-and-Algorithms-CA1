@@ -422,6 +422,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new BiodiversityManagerGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_mainPageBtnActionPerformed
     //go to Priority Environment section 
@@ -430,6 +431,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         fileManager.save(myEnvironmentData,"EnvironmentData.dat");
         new PriorityEnvironmentGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
     //go to Climate Action Section
@@ -438,6 +440,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
         fileManager.save(myEnvironmentData,"EnvironmentData.dat");
         new ClimateActionGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_climateActionBtnActionPerformed
     //exit from the application
@@ -516,7 +519,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
     private void getEnvironmentDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getEnvironmentDataActionPerformed
         // TODO add your handling code here:
         int iPosition = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the index of the EnvironmentData you want: "));
-        displayTA.append("The Environmental data at " + iPosition + " position is\n" + myEnvironmentData.get(iPosition)+"\n");
+        displayTA.append("The Environmental data at " + iPosition + " position is:\n" + myEnvironmentData.get(iPosition)+"\n");
     }//GEN-LAST:event_getEnvironmentDataActionPerformed
     //add Environmental data set by chosen scope such as Country to EnvironmentDataList
     private void addDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataBtnActionPerformed
@@ -729,7 +732,7 @@ public class EnvironmentDataGUI extends javax.swing.JFrame {
 //                found = true;
 //            }
             if (bm.getName() != null && bm.getName().equalsIgnoreCase(searchName)) {
-                displayTA.append(" At " + iCount + " position. " + "\nThe Environment data was found\n " + myEnvironmentData.get(iCount) + " \n");
+                displayTA.append(" At " + iCount + " position. " + "\n The Environment data was found \n" + myEnvironmentData.get(iCount) + " \n");
                 found = true;
             }
 

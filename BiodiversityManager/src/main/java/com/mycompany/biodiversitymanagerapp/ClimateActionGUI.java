@@ -216,37 +216,41 @@ public class ClimateActionGUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
+                .addComponent(resultLbl)
+                .addGap(66, 66, 66)
+                .addComponent(jScrollPane1)
+                .addGap(212, 212, 212))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(descriptionLbl)
                             .addComponent(nameLbl)
                             .addComponent(scopeLbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(resultTF, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(descriptionTF, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(scopeTF))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(previousBtn)
-                                .addGap(47, 47, 47)
-                                .addComponent(nextBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                            .addComponent(removeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(insertClimateActionData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(sizeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(printListBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(getClimateActionData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(22, 22, 22))
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(descriptionLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(resultTF, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descriptionTF, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(scopeTF))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(resultLbl)
-                        .addGap(66, 66, 66)
-                        .addComponent(jScrollPane1)
-                        .addGap(212, 212, 212))))
+                        .addComponent(previousBtn)
+                        .addGap(47, 47, 47)
+                        .addComponent(nextBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                    .addComponent(removeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(insertClimateActionData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sizeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(printListBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(getClimateActionData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,6 +308,7 @@ public class ClimateActionGUI extends javax.swing.JFrame {
         fileManager.save(myClimateAction, "ClimateAction.dat");
         new EnvironmentDataGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_environmentDataBtnActionPerformed
     //go to Priority Environment section
@@ -312,6 +317,7 @@ public class ClimateActionGUI extends javax.swing.JFrame {
         fileManager.save(myClimateAction, "ClimateAction.dat");
         new PriorityEnvironmentGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
     //exit from the application
@@ -324,6 +330,7 @@ public class ClimateActionGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new BiodiversityManagerGUI().setVisible(true);
         //this.setVisible(false);
+        //closes window properly, releases memory while setVisible keeps memory, overwrites save and inconsisten file loading
         this.dispose();
     }//GEN-LAST:event_mainPageBtnActionPerformed
     //get climate action Data at a specific position
