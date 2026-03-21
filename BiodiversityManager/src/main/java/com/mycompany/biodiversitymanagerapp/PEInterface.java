@@ -16,7 +16,11 @@ public interface PEInterface{
     
     public boolean isEmpty();
     
+    public Object frontData();
+    
     public Object dequeue();
     
     public  String printPEQueue();
+    
+    public Object findByPriority(int inewPriority);
 }

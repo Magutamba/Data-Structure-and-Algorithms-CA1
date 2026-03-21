@@ -15,10 +15,11 @@ import java.io.ObjectOutputStream;
  *
  * @author moise
  */
-public class FileManagement {
+public class FileManagement implements FileManagementInterface {
 
     //save method to save ADT data
-    public static void save(Object obj, String fileName) {
+    @Override
+    public void save(Object obj, String fileName) {
         try (ObjectOutputStream oStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
             //write data to file
             oStream.writeObject(obj);
@@ -29,27 +30,29 @@ public class FileManagement {
     }
 
     //load meathod load the files with ADT data, using Java generic type to allow all ADT's to be saved,
-    //<T> preserve the type a when called
+    //<T> preserve the type when called
     //adt variable is returned if load fails so it can continue safely
-    @SuppressWarnings("uncheked")//stop Java from warning me
-    public static <T> T load(String fileName, T adt) {
+    @SuppressWarnings("unchecked")//stop Java from warning me
+    @Override
+    public <T> T load(String fileName, T adt) {
         try (ObjectInputStream oStream = new ObjectInputStream(new FileInputStream(fileName))) {
             //read object from file
             return (T) oStream.readObject();
 
         } catch (FileNotFoundException e) {
-            
-            System.out.println("The data file" + fileName+", was not found. Save before loading a file.");
+            System.out.println("The data file " + fileName+", was not found. Save before loading a file.");
             return adt;
         
         }catch (ClassNotFoundException e) {
-            System.out.println("An error occurred while reading the file. Ensure the class matches the saved data");
+            System.out.println("An error occurred while reading the file. Ensure the class matches the saved data. "+e.getMessage());
             return adt;
         } catch (IOException e) {
             System.out.println("An error occurred while reading the file." + e.getMessage());
             return adt;
 
         }
+            
     }
-    
+
+
 }

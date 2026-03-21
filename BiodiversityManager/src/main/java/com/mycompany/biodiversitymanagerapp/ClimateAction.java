@@ -27,14 +27,30 @@ public class ClimateAction extends BiodiversityManager implements Serializable {
     }
 
     //getter
-
     public String getResult() {
         return result;
     }
-    
-    //override the method with the ClimateAction variable
+
+    /**
+     *
+     */
     @Override
-    public String printDetails() {
-        return super.printDetails()+"Result of solutions applied: "+result; 
-    }  
+    public void validCommon() {
+        //inherit the validation from super class BiodiversityManager
+        super.validCommon();
+        if (result == null || result.equals("")) {
+            throw new IllegalArgumentException("A result must be entered.");
+        }
+    }
+
+//    //override the method with the ClimateAction variable
+//    @Override
+//    public String printDetails() {
+//        return super.printDetails()+"Result of solutions applied: "+result; 
+//    }  
+    @Override
+    public String toString() {
+        //override the method with the ClimateAction variable
+        return super.printDetails() + "\nResult of solutions applied: " + result;
+    }
 }

@@ -4,18 +4,20 @@
  */
 package com.mycompany.biodiversitymanagerapp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author moise
  */
-public class BiodiversityManager {
+public class BiodiversityManager implements Serializable {
     
     //variable
     private String scope, name, description;
 
     //overloaded constructor
-    public BiodiversityManager(String scope, String name, String description) {
-        this.scope = scope;
+    protected BiodiversityManager(String scope, String name, String description) {
+        this.scope = scope; 
         this.name = name;
         this.description = description;
     }
@@ -46,15 +48,34 @@ public class BiodiversityManager {
     public String getDescription() {
         return description;
     }
-    //error handling for scope
-    public void validScope(String scope){
+    //error handling for common variables
+    public void validCommon(){
         if(scope==null || (!scope.equalsIgnoreCase("Country") && !scope.equalsIgnoreCase("City") && !scope.equalsIgnoreCase("Habitat")) ){
             throw new IllegalArgumentException(" Scope can only be 'Country', 'City', 'Habitat' ");
         }
+        
+        if(name==null || name.trim().equals("")){
+            throw new IllegalArgumentException(" A name must be entered.");
+        }
+         if(description==null || description.trim().equals("")){
+            throw new IllegalArgumentException(" A description must be entered.");
+        }
+        
     }
-    //method can be overwritten in subclasses
+    //abstract validate methods, to be implemented in subclasses
+    public void validate(){
+        validCommon();
+    }
+    
+    //method for displaying details will be overwritten in subclasses
     public String printDetails(){
-        return "Scope: "+scope+"\nName "+name+"\ndescription "+description;
+        return "Scope: "+scope+"\nName: "+name+"\nDescription: "+description;
+    }
+    
+    //use my own toString() implementation rather than Java default toString() for objects
+    @Override
+    public String toString(){
+        return printDetails();
     }
     
 }

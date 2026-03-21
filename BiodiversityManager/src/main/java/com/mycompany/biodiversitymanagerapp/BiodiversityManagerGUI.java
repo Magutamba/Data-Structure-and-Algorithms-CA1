@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.biodiversitymanagerapp;
-
+import com.mycompany.biodiversitymanagerapp.EnvironmentDataGUI;
+import com.mycompany.biodiversitymanagerapp.PriorityEnvironmentGUI;
+import com.mycompany.biodiversitymanagerapp.ClimateActionGUI;
 import java.awt.Color;
 
 /**
@@ -31,16 +33,13 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new javax.swing.JTextField();
         priorityEnvironmentBtn = new javax.swing.JButton();
         environmentDataBtn = new javax.swing.JButton();
         climateActionBtn = new javax.swing.JButton();
         exitBtn = new javax.swing.JButton();
+        titleLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        title.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        title.setText("Biodiversity Manager Main Page");
 
         priorityEnvironmentBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         priorityEnvironmentBtn.setText("Priority Environment");
@@ -74,12 +73,15 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
             }
         });
 
+        titleLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        titleLbl.setText("Biodiversity Manager Main Page");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(environmentDataBtn)
@@ -89,48 +91,48 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
                         .addComponent(climateActionBtn)
                         .addGap(107, 107, 107))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(233, 233, 233))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(exitBtn)
-                        .addGap(351, 351, 351))))
+                        .addGap(349, 349, 349))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(titleLbl)
+                        .addGap(249, 249, 249))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168)
+                .addGap(22, 22, 22)
+                .addComponent(titleLbl)
+                .addGap(178, 178, 178)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priorityEnvironmentBtn)
                     .addComponent(climateActionBtn)
                     .addComponent(environmentDataBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(exitBtn)
                 .addGap(131, 131, 131))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //go to Environment Data section
     private void environmentDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_environmentDataBtnActionPerformed
         // TODO add your handling code here:
-        new EnvironmentDataGUI.setVisible(true);
+        new EnvironmentDataGUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_environmentDataBtnActionPerformed
-
+    //go to Priority Environment section 
     private void priorityEnvironmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityEnvironmentBtnActionPerformed
         // TODO add your handling code here:
-        new PriorityEnvironmentGUI.setVisible(true);
+        new PriorityEnvironmentGUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_priorityEnvironmentBtnActionPerformed
-
+    //go to Climate Action Section
     private void climateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climateActionBtnActionPerformed
         // TODO add your handling code here:
-        new ClimateActionGUI.setVisible(true);
+        new ClimateActionGUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_climateActionBtnActionPerformed
-
+    //exit from the application
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -166,6 +168,6 @@ public class BiodiversityManagerGUI extends javax.swing.JFrame {
     private javax.swing.JButton environmentDataBtn;
     private javax.swing.JButton exitBtn;
     private javax.swing.JButton priorityEnvironmentBtn;
-    private javax.swing.JTextField title;
+    private javax.swing.JLabel titleLbl;
     // End of variables declaration//GEN-END:variables
 }
